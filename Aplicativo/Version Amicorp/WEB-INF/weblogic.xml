@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/90" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/90 http://www.bea.com/ns/weblogic/90/weblogic-web-app.xsd">
+  <container-descriptor>
+      <show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+  </container-descriptor>
+    <context-root xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app">FiduciarioAmicorp</context-root>
+  <!--security-role-assignment>
+    <role-name>FIDUCIARIO</role-name>
+    <principal-name>FIDUCIARIO</principal-name>
+  </security-role-assignment--> 
+</weblogic-web-app>

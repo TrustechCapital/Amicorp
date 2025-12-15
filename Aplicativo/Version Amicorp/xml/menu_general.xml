@@ -1,0 +1,221 @@
+<?xml version='1.0' ?>
+<menu absolutePosition="auto" mode="classic" maxItems="8" xname="Demo Menu" mixedImages="yes" type="a2">
+  <MenuItem name="Formalización" id="moduloFormalizacion" width="30" withoutImages="true">
+    <MenuItem name="Prospectos" id="Formalizacion.PrincipalProspectos"/>
+    <MenuItem name="Proyecto" id="formalizacion_prospectos_anteproyectos">
+      <MenuItem name="Proyecto" id="Formalizacion.PrincipalProspectosAnteproyecto"/>
+      <MenuItem name="Fideicomitentes" id="Formalizacion.PrincipalProspectosFideicomitentes"/>
+      <MenuItem name="Fideicomisarios" id="Formalizacion.PrincipalProspectosFideicomisarios"/>
+      <MenuItem name="Honorarios Aceptación" id="Formalizacion.PrincipalProspectosHonorarios"/>
+    </MenuItem>
+    <MenuItem name="Poderes" id="Formalizacion.PrincipalProspectosPoderes"/>
+    <MenuItem name="Notarios" id="Formalizacion.PrincipalProspectosNotarios"/>
+  </MenuItem>
+  <MenuItem name="Administración" id="moduloAdministracion" width="30px" panelWidth="300px" withoutImages="true">
+    <MenuItem name="Fideicomisos" id="administracion_fideicomisos">
+      <MenuItem name="Generales" id="Administracion.PrincipalFideicomisos"/>
+      <MenuItem name="Contactos" id="Administracion.PrincipalContactosFideicomisos"/>
+    </MenuItem>
+    <MenuItem name="Fideicomitentes" id="Administracion.PrincipalFideicomitentes"/>
+    <MenuItem name="Fideicomisarios" id="Administracion.PrincipalFideicomisarios"/>
+    <MenuItem name="Terceros" id="Administracion.PrincipalTerceros"/>
+    <MenuItem name="Comités Técnicos" id="administracion_comites">
+      <MenuItem name="Generales" id="Administracion.PrincipalComiteTecnico"/>
+      <MenuItem name="Calendarios de Sesiones" id="Administracion.PrincipalCalendarioSesionesComiteTecnico"/>
+    </MenuItem>
+    <MenuItem name="Finalidades del Fideicomiso" id="Administracion.PrincipalFinalidadesContrato"/>
+  </MenuItem>
+  <MenuItem name="Contabilidad" id="moduloContabilidad">
+    <MenuItem name="Catálogos" id="contabilidad_catalogos">
+      <MenuItem name="Cuentas Contables " id="Contabilidad.Cuentas.PrincipalCatalogoCuentas"/>
+      <MenuItem name="Guías Contables" id="Contabilidad.Guias.PrincipalCatalogoGuias"/>
+      <MenuItem name="Transacciones" id="Contabilidad.Transacciones.PrincipalTransacciones"/>
+      <MenuItem name="Operaciones" id="Contabilidad.Operaciones.PrincipalOperaciones"/>
+      <MenuItem name="Matriz de Cuentas" id="Contabilidad.Matriz.PrincipalMatrizCuentas"/>
+      <MenuItem name="Conceptos Cont. Inst." id="Contabilidad.Conceptos.PrincipalConceptosContInst"/>
+    </MenuItem>
+    <MenuItem name="Operación" id="contabilidad_operativas">
+      <MenuItem name="Charola de Instrucciones Internet" id="Contabilidad.InstruccionesInternetContabilizacion.PrincipalInstruccionesInternetContabilizacion"/>
+      <MenuItem name="Póliza Contable" id="Contabilidad.Polizas.PrincipalOperativasPolizas"/>
+      <MenuItem name="Cancelación de Operaciones" id="Contabilidad.CancelacionOperaciones.PrincipalCancelacionOperaciones"/>
+      <MenuItem name="Cancelación de Operaciones Internet aceptadas por Poliza" id="Contabilidad.CancelacionOperacionesInternet.PrincipalCancelacionOperacionesInternet"/>
+      <MenuItem name="Bloqueo de Operaciones mes Anterior" id="Contabilidad.BloqueoOperaciones.PrincipalBloqueoOperacionesMesAnterior"/>
+    </MenuItem>
+    <MenuItem name="Consultas" id="contabilidad_consultas">
+      <MenuItem name="Saldos Fideicomisos" id="Contabilidad.SaldosFideicomiso.PrincipalConsultaSaldosFideicomiso"/>
+      <MenuItem name="Saldos por Cuenta" id="Contabilidad.SaldosCuenta.PrincipalConsultaSaldosCuenta"/>
+      <MenuItem name="Movimientos" id="Contabilidad.Movimientos.PrincipalConsultaMovimientos"/>
+      <MenuItem name="Asientos Contables" id="Contabilidad.Asientos.PrincipalConsultaAsientos"/>
+      <MenuItem name="Operaciones Contables no Existentes" id="Contabilidad.OperacionesNoExistentes.PrincipalConsultaOperacionesNoExistentes"/>
+    </MenuItem>
+    <MenuItem name="Reportes" id="Contabilidad.Reportes.PrincipalReportes">
+    </MenuItem>
+    <MenuItem name="Cierre Mes anterior por Fideicomiso" id="Contabilidad.CierreContableMesAnterior.PrincipalCierreContableMesAnteriorFideicomiso"/>
+    <MenuItem name="Régimen Fiscal" id="contabilidad_regimen_fiscal">
+      <MenuItem name="Régimen Fiscal" id="Contabilidad.CedulaFiscal.PrincipalCedulaFiscalRegimenFiscal"/>
+      <MenuItem name="Obligaciones Fiscales" id="Contabilidad.ObligacionesFiscales.PrincipalObligacionesFiscalesRegimenFiscal"/>
+      <MenuItem name="Tratamiento Fiscal" id="Contabilidad.TratamientoFiscal.PrincipalTratamientoFiscalRegimenFiscal"/>
+      <MenuItem name="SAT" id="contabilidad_SAT">        
+        <MenuItem name="Saldos SAT" id="Contabilidad.SaldosSAT.PrincipalSaldosSAT"/>
+        <MenuItem name="Utilidad/Perdida Fiscal SAT" id="Contabilidad.UtilidadPerdidaFiscalSAT.PrincipalUtilidadPerdidaFiscalSAT"/>
+        <MenuItem name="Archivo SAT" id="Contabilidad.ArchivoSAT.PrincipalArchivoSAT"/>
+      </MenuItem>
+    </MenuItem>
+    <MenuItem name="Interfases" id="contabilidad_interfases">
+        <MenuItem name="SIF" id="Contabilidad.InterfaseSIF.PolizasInterfaseContableSIF"/>
+        <MenuItem name="Conciliación Contable (SICA)" id="Contabilidad.InterfaseSICA.PrincipalInterfaseSICA"/>
+    </MenuItem>
+  </MenuItem>
+  <MenuItem name="Tesorería" id="moduloTesoreria" width="30" withoutImages="true">
+     <MenuItem name="Catálogos" id="tesoreria_catalogos">
+       <MenuItem name="Instrumentos" id="Tesoreria.Instrumentos.PrincipalCatalogoInstrumentos"/>
+       <MenuItem name="Emisiones" id="Tesoreria.Emisiones.PrincipalCatalogoEmisiones"/>
+       <MenuItem name="Emisores" id="Tesoreria.Emisores.PrincipalCatalogoEmisores"/>
+       <MenuItem name="Intermediarios" id="Tesoreria.Intermediarios.PrincipalCatalogoIntermediarios"/>
+       <MenuItem name="Contratos de Inversión" id="Tesoreria.ContratosInversion.PrincipalCatalogoContratosInversion"/>
+       <MenuItem name="Precios Mercado" id="Tesoreria.PreciosMercado.PrincipalCatalogoPreciosMercado"/>
+       <MenuItem name="Tipo Cambio" id="Tesoreria.TiposCambio.PrincipalCatalogoTiposCambio"/>
+     </MenuItem>
+     <MenuItem name="Operaciones" id="tesoreria_operaciones">
+       <MenuItem name="Compras y Ventas" id="Tesoreria.ComprasVentas.PrincipalComprasVentas"/>
+       <MenuItem name="Reportos" id="Tesoreria.Reportos.PrincipalReportos"/>
+       <MenuItem name="Pagares" id="Tesoreria.Pagares.PrincipalPagares"/>
+       <MenuItem name="Entradas Salidas Físicas" id="Tesoreria.EntradasSalidas.PrincipalEntradasSalidas"/>
+       <MenuItem name="Vencimiento Reportos" id="Tesoreria.VencimientoManualReportos.PrincipalVencimientoManualReportos"/>
+       <MenuItem name="Instrucciones Internet" id="Tesoreria.InstruccionesInternetRecibidas.PrincipalInstruccionesInternetRecibidas"/>
+       <MenuItem name="Instrucciones Swift" id="Tesoreria.InstruccionesInternetSWIFT.PrincipalInstruccionesInternetSWIFTAceptadas"/>
+       <MenuItem name="Archivos Depósitos" id="Tesoreria.ArchivosDepositos.PrincipalArchivosDepositos"/>
+       <MenuItem name="Archivos Retiros" id="Tesoreria.ArchivosRetiros.PrincipalArchivosRetiros"/>
+       <MenuItem name="Acuerdos Comité Técnico" id="Tesoreria.InstruccionesAcuerdosComiteTecnico.PrincipalInstruccionesAcuerdosComiteTecnico"/>
+       <MenuItem name="Cancelación Instrucciones Internet" id="Tesoreria.CancelacionInstruccionesInternet.PrincipalCancelacionInstruccionesInternet"/>
+     </MenuItem>
+     <MenuItem name="Consultas" id="tesoreria_consultas">
+       <MenuItem name="Posición Fideicomiso" id="Tesoreria.PosicionContratos.PrincipalConsultaPosicionContratos"/>
+       <MenuItem name="Movimientos Foseg" id="Tesoreria.MovimientosFOSEG.PrincipalConsultaMovimientosFOSEG"/>
+     </MenuItem>
+     <MenuItem name="Interfaces" id="tesoreria_interfases">
+       <MenuItem name="TAS / SCN / MECA" id="Tesoreria.Interfaces.PrincipalTAS"/>
+       <MenuItem name="TEF" id="Tesoreria.InterfaseTEF.PrincipalInterfaseTEF"/>
+	   <MenuItem name="TEF via FFON" id="Tesoreria.InterfaseTEFFFON.PrincipalInterfaseTEFFFON"/>
+     </MenuItem>
+     <MenuItem name="Foseg" id="tesoreria_foseg">
+       <MenuItem name="Conceptos" id="Tesoreria.ConceptosFOSEG.PrincipalCatalogoConceptosFOSEG"/>
+       <MenuItem name="Presupuesto Inicial" id="Tesoreria.PresupuestoInicialFOSEG.PrincipalPresupuestoInicialFOSEG"/>
+       <MenuItem name="Carga Inicial de Saldos" id="Tesoreria.CargaInicialSaldosFOSEG.PrincipalCargaInicialSaldosFOSEG"/>
+       <MenuItem name="Reprogramación de Ejercido" id="Tesoreria.ReprogramacionEjercido.PrincipalReprogramacionEjercidoFOSEG"/>
+       <MenuItem name="Incremento o Cancelación" id="Tesoreria.ReintegroRetiro.PrincipalReintegroRetiroEjercicioAsignadoFOSEG"/>
+       <MenuItem name="Restructuración de Saldos" id="Tesoreria.ReestructuracionSaldos.PrincipalReestructuracionSaldosFOSEG"/>
+       <MenuItem name="Carga de Rendimientos" id="Tesoreria.CargaRendimientosFOSEG.PrincipalCargaRendimientosFOSEG"/>
+     </MenuItem>
+  </MenuItem>
+  <MenuItem name="Honorarios" id="modulohonorarios" width="30" withoutImages="true">
+    <MenuItem name="Catálogos" id="honorarios_catalogos">
+      <MenuItem name="Parámetros Honorarios" id="Honorarios.PrincipalParametrosHonorarios"/>
+      <MenuItem name="Domicilio Fiscal" id="Honorarios.PrincipalCatalogoDomicilioFiscal"/>
+      <MenuItem name="Inpc" id="Honorarios.PrincipalCatalogoINPC"/>
+      <MenuItem name="Avisos de Cobro" id="Honorarios.PrincipalCatalogoDatosAvisos"/>
+    </MenuItem>
+    <MenuItem name="Operación" id="honorarios_operacion">
+       <MenuItem name="Provisiones" id="Honorarios.PrincipalFiduciariosGeneracionOtrosIngresosHonorarios"/>
+       <MenuItem name="Pagos" id="Honorarios.PrincipalPagoHonorariosConsulta"/>
+       <MenuItem name="Condonaciones" id="Honorarios.PrincipalCondonacionHonorarios"/>
+       <MenuItem name="Presupuesto de Honorarios" id="Honorarios.PrincipalPresupuestoAnualHonorarios"/>
+       <MenuItem name="Facturación" id="Honorarios.PrincipalFacturacion"/>
+    </MenuItem>
+    <MenuItem name="Consulta" id="honorarios_consulta">
+      <MenuItem name="Cartera por Fideicomiso" id="Honorarios.PrincipalCarteraContratoHonorarios"/>
+   </MenuItem>
+   <MenuItem name="Reportes" id="Honorarios.Reportes.PrincipalReportes"/>
+  </MenuItem>
+  <MenuItem name="Control y Gestión" id="modulocontrol" width="30" withoutImages="true">
+    <MenuItem name="Personal" id="ControlGestion.PrincipalSeguridadPersonal"/>
+    <MenuItem name="Seguridad" id="control_seguridad">
+      <MenuItem name="Estructura Organizacional" id="ControlGestion.PrincipalSeguridadEstructuraControlGestion"/>
+      <MenuItem name="Módulos" id="ControlGestion.PrincipalSeguridadModulos"/>
+      <MenuItem name="Puestos" id="ControlGestion.PrincipalSeguridadPuestos"/>
+      <MenuItem name="Funciones por Puestos" id="ControlGestion.PrincipalSeguridadFuncionesXPuesto"/>
+    </MenuItem>
+    <MenuItem name="Usuarios" id="control_Usuarios">
+      <MenuItem name="Fiducia Internos" id="ControlGestion.PrincipalSeguridadUsuariosControlGestion"/>
+      <MenuItem name="Fiducia Internet" id="ControlGestion.PrincipalSeguridadUsuariosInternet"/>
+      <MenuItem name="Autorizaciones" id="ControlGestion.PrincipalAutorizacionesControlGestion"/>
+    </MenuItem>
+    <MenuItem name="Catálogos" id="control_catalogos">
+      <MenuItem name="Actividades Económicas" id="ControlGestion.PrincipalCatalogosGeneralesActividadesEconomicas"/>
+      <MenuItem name="Estructura Geográfica" id="control_catalogos_estructura_geografica">
+         <MenuItem name="Estructura Geográfica Países" id="ControlGestion.PrincipalCatalogosGeneralesEstructuraGeograficaPaises"/>
+         <MenuItem name="Estructura Geográfica Monedas" id="ControlGestion.PrincipalCatalogoGeneralesEstructuraGeograficaMonedas"/>
+         <MenuItem name="Estructura Geográfica Estados" id="ControlGestion.PrincipalCatalogosGeneralesEstructuraGeograficaEstados"/>
+         <MenuItem name="Estructura Geográfica Nacionalidades" id="ControlGestion.PrincipalCatalogosGeneralesEstructuraGeograficaNacionalidades"/>
+      </MenuItem>
+      <MenuItem name="Días Feriados" id="ControlGestion.PrincipalCatalogosGeneralesEstructuraGeograficaDiasFeriados"/>
+      <MenuItem name="Claves del Sistema" id="ControlGestion.PrincipalCatalogoClavesControlGestion"/>
+      <MenuItem name="Índices Oficiales" id="ControlGestion.PrincipalCatalogosIndicesOficialesControlGestion"/>
+      <MenuItem name="Ejecutivos" id="ControlGestion.PrincipalCatalogosEjecutivosControlGestion"/>
+    </MenuItem>
+    <MenuItem name="Consulta" id="control_consulta">
+      <MenuItem name="Bitácora" id="ControlGestion.PrincipalBitacoraControlGestion"/>
+    </MenuItem>
+    <MenuItem name="Constitución" id="control_constitucion">
+      <MenuItem name="Ficha Constitución" id="ControlGestion.PrincipalConstitucion"/>
+    </MenuItem>
+    <MenuItem name="Extinción" id="control_esxtincion">
+      <MenuItem name="Extinción Fideicomisos" id="ControlGestion.PrincipalExtincionControlGestion"/>
+    </MenuItem>
+    <MenuItem name="Cierre Apertura Línea Internet" id="ControlGestion.PrincipalConfiguracionAccesoInternetControlGestion"/>
+    <MenuItem name="Operaciones por Fideicomiso" id="control_oper_operaciones_fideicomiso">
+      <MenuItem name="Operaciones por Fideicomiso" id="ControlGestion.OperacionesFideicomiso.PrincipalOperacionesFideicomiso"/>
+      <MenuItem name="Administración de Cuentas" id="ControlGestion.AdministracionCuentas.PrincipalAdministracionCuentas"/>
+      <MenuItem name="Traspasos Inter Fideicomisos" id="ControlGestion.PrincipalTraspasoInterFideicomisosControlGestion"/>
+      <MenuItem name="Avisos por Internet" id="ControlGestion.InternetAvisos"/>
+    </MenuItem>
+    <MenuItem name="Encuesta" id="control_encuesta">
+      <MenuItem name="Opciones Encuesta" id="ControlGestion.PrincipalEncuestaOpcionesControlGestion"/>
+      <MenuItem name="Personaliza Encuesta" id="ControlGestion.PrincipalPersonalizaEncuestaControlGestion"/>
+    </MenuItem>
+  </MenuItem>
+  <MenuItem name="Operaciones" id="moduloOperaciones" width="30" withoutImages="true">
+    <MenuItem name="Catálogos" id="operaciones_catalogos">
+      <MenuItem name="Planes Operación" id="Operacion.Planes.PrincipalCatalogoPlanes"/>
+    </MenuItem>
+    <MenuItem name="Consultas" id="operaciones_consultas">
+      <MenuItem name="Bitácora Operativa" id="Operacion.BitacoraOperativa.PrincipalConsultaBitacoraOperativa"/>
+    </MenuItem>
+    <MenuItem name="Operaciones" id="operaciones_operaciones">
+      <MenuItem name="Ejecución Planes" id="Operacion.EjecutorPlanes.PrincipalEjecutorPlanes"/>
+      <MenuItem name="Abrir Sistema" id="Operacion.AbrirSistema.PrincipalAbrirSistema"/>
+      <MenuItem name="Cerrar Sistema" id="Operacion.CerrarSistema.PrincipalCerrarSistema"/>
+    </MenuItem>
+  </MenuItem>
+  <MenuItem name="Históricos" id="moduloHistoricos" width="30" withoutImages="true">
+    <MenuItem name="Fideicomisos" id="Historicos.ConsultaFideicomisos"/>
+    <MenuItem name="Fideicomitentes" id="Historicos.ConsultaFideicomitentes"/>
+    <MenuItem name="Fideicomisarios" id="Historicos.ConsultaFideicomisarios"/>
+    <MenuItem name="Terceros" id="Historicos.ConsultaTerceros"/>
+    <MenuItem name="Comité Técnico" id="Historicos.ConsultaComiteTecnico"/>
+    <MenuItem name="Finalidades del Contrato" id="Historicos.ConsultaFinalidades"/>
+    <MenuItem name="Detalle de Extinción" id="Historicos.DetalleExtincion"/>
+  </MenuItem>
+  <MenuItem name="Cuentas Individuales" id="moduloCuentasIndividuales" width="30" withoutImages="true">
+    <MenuItem name="Fideicomisos de Cuentas Individuales" id="CuentasIndividuales.CuentasIndividuales.PrincipalFideicomisosCuentasIndividuales"/>
+    <MenuItem name="Catálogos" id="operaciones_catalogos">
+      <MenuItem name="Definición Estructura" id="CuentasIndividuales.DefinicionEstructura.PrincipalCatalogoDefinicionEstructura"/>
+      <MenuItem name="Datos de Operación" id="CuentasIndividuales.DatosOperacion.PrincipalCatalogoDatosOperacion"/>
+      <MenuItem name="Definición Niveles de Estructura" id="CuentasIndividuales.DefinicionNiveles.PrincipalDefinicionNiveles"/>
+    </MenuItem>
+    <MenuItem name="Movimientos" id="operaciones_movimientos">
+      <MenuItem name="Movimientos Ctas. Ind. (Depósitos/Retiros)" id="CuentasIndividuales.MovimientosCuentas.PrincipalMovimientosCuentas"/>
+      <MenuItem name="Traspaso entre Cuentas" id="CuentasIndividuales.TraspasoCuentas.PrincipalTraspasoCuentas"/>
+      <MenuItem name="Carga Masiva Movimientos" id="CuentasIndividuales.CargaMasivaMovimientos.PrincipalCargaMasivaMovimientos"/>
+    </MenuItem>
+    <MenuItem name="Procesos" id="operaciones_procesos">
+      <MenuItem name="Cierre Mensual" id="CuentasIndividuales.CierreMensual.PrincipalCierreMensual"/>
+    </MenuItem>
+    <MenuItem name="Consulta" id="operaciones_consulta">
+      <MenuItem name="Saldos por Inversionista" id="CuentasIndividuales.SaldosInversionista.PrincipalSaldosInversionista"/>
+    </MenuItem>
+    <MenuItem name="Fideicomisos Cuentas Individuales" id="operaciones_fideicomiso_cuentas_individuales">
+      <MenuItem name="Fideicomisos Cuentas Individuales" id="CuentasIndividuales.FideicomisosCuentasIndividuales.PrincipalFideicomisosCuentasIndividuales"/>
+    </MenuItem>
+  </MenuItem>
+</menu>

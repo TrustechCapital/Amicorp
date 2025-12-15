@@ -1,0 +1,83 @@
+#dvFeeder
+{
+  position:absolute;
+  left:0px;
+  bottom:16px;
+  margin-left:10px;
+  border:2px solid #0f98d6;
+  border-bottom:hidden;
+  height: 350px;
+  width: 420px;
+  background-color:#fff;
+}
+
+#dvFeederScroll
+{
+  position:absolute;
+  left:-210px;
+  top:30px;
+
+  height: 320px;
+  width: 418px;
+  
+  overflow:auto;
+}
+
+#dvFeederHead,.dvFeederEvent
+{
+  height: 50px;
+  
+  position:absolute;
+  left:-200px;
+  top:0px;
+  width: 420px;
+}
+
+
+#dvFeederHead
+{
+  height: 30px;  
+  line-height: 30px; 
+  left:-210px;
+  
+  color:#fff;
+  background-color:#0f98d6;
+  
+  font-weight:bold;
+  font-size:16px;
+}
+
+
+
+.dvFeederEvent,.dvFeederEventTable
+{
+  color:#333;
+  width: 400px;
+  
+  font-size:14px;
+}
+
+
+
+.dvFeederFecha
+{
+  color:#5A694A;
+  width:100px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.dvFeederFechaRed
+{
+  color:#A06360;
+  width:100px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.rel
+{
+  position:relative;
+}
+
+

@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+  <!--bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+      <property name="targetObject">
+          <bean factory-method="getRootLogger"
+                class="org.apache.log4j.Logger" />
+      </property>
+      <property name="targetMethod">
+          <value>addAppender</value>
+      </property>
+      <property name="arguments">
+          <list>
+              <bean init-method="activateOptions"
+                    class="org.apache.log4j.ConsoleAppender">
+                  <property name="layout">
+                      <bean class="org.apache.log4j.PatternLayout">
+                          <constructor-arg>
+                              <value>%d, [%5p] [%t] [%c] - %m%n</value>
+                          </constructor-arg>
+                      </bean>
+                  </property>
+                  <property name="threshold">
+                      <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"
+                            id="org.apache.log4j.Priority.DEBUG" />
+                  </property>
+              </bean>
+          </list>
+      </property>
+  </bean-->
+
+  <!-- Bean de Spring que se encarga de procesar las peticiones que solicitaran contenido HTML -->
+  <bean id="htmlActionController" class="mx.gob.nafin.fiduciario.controller.HtmlActionController"/>
+  
+  <!-- Controller para la exportacion de archivos planos -->
+  <bean id="exportFileController" class="mx.gob.nafin.fiduciario.controller.ExportFileController">
+    <property name="genericDataAccessService">
+      <ref bean="genericDataAccessServiceBean"/>
+    </property>
+  </bean>
+  
+  <!-- Controller para subir y procesar archivos -->
+  <bean id="uploadFileController" class="mx.gob.nafin.fiduciario.controller.UploadFileController">
+    <property name="jdbcTemplate">
+      <ref bean="JdbcTemplate"/>
+    </property>
+  </bean>
+  
+  <!-- Imports -->
+  <import resource="../modules/fiduciario_test.xml"/>
+  <import resource="../modules/catalogos.xml"/>
+  <import resource="../modules/utilControllers.xml"/>
+  <import resource="../modules/fiduciario_reportes.xml"/>
+  <import resource="../modules/consultas.xml"/>
+  <import resource="../modules/vinta.xml"/>
+  
+  
+	<bean id="beanNameUrlMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="simpleUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+        <!-- URLs que sirven para obtener solo contenido HTML -->
+        
+        <prop key="/upload.do">uploadFileController</prop> <!-- Pagina para Subir Archivos -->
+        
+        <prop key="/principal.do">htmlActionController</prop> <!-- Pagina Principal -->
+        
+        <!-- Ejemplos -->
+        <prop key="/jsp/test/cliente.do">htmlActionController</prop>
+        <prop key="/jsp/test/paises.do">htmlActionController</prop>
+        <prop key="/principal_ejemplo.do">htmlActionController</prop>
+        <prop key="/modules/template/consulta.do">htmlActionController</prop> <!-- Template -->
+        <prop key="/principal_upload.do">htmlActionController</prop> <!-- Pagina Principal -->
+        
+        <!-- URL que devuelve el xml de menu -->
+        <prop key="/menu_general.do">menuController</prop>
+        
+        <!-- URLs que sirven para obtener o mandar objetos JavaScript -->
+        
+        <!-- URLs Utilitarias -->
+        <prop key="/getObject.do">objectController</prop>
+        
+        <!-- URLs de catalogos -->
+        <prop key="/obtenerCatalogo.do">catalogController</prop>
+        <prop key="/altaCatalogo.do">catalogController</prop>
+        <prop key="/bajaCatalogo.do">catalogController</prop>
+        <prop key="/modificaCatalogo.do">catalogController</prop>
+        
+        <!-- URL de consultas genericas -->
+        <prop key="/getRef.do">consultasController</prop>
+        <prop key="/doRef.do">consultasController</prop>        
+        <prop key="/executeRef.do">consultasController</prop>
+        
+        <prop key="/consultaAdv.do">consultasCatalogController</prop>
+        
+        <!-- URL de consultas genericas para Reportes -->
+        <prop key="/imprimirReporte.do">reportesController</prop>
+        <prop key="/doRefReporte.do">reportesController</prop>
+        <prop key="/execRefReporte.do">reportesController</prop>
+
+        <!-- Reportes de Honorarios -->
+        <prop key="/modules/Honorarios/Reportes/PrincipalReportes.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/IngresosFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/AvisosCobro.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/DevengadosNoCobrados.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/EjerciciosAnteriores.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/Factura.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/FechasRevisionINPC.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/IngresosNoPresupuestados.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/IngresosPorServicios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/ProyeccionFechasProvicionesPendientes.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/PrimerRecordatorio.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/PrimerRecordatorioMensual.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/SegundoRecordatorioMensual.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/SegundoRecordatorioTrimestral.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/TercerRecordatorioBimestral.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/Reportes/TercerRecordatorioMensual.do">htmlActionController</prop>
+        <!-- Inicia modulo contabilidad -->
+        <!-- Cuentas -->
+        <prop key="/modules/Contabilidad/Cuentas/PrincipalCatalogoCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Cuentas/MantenimientoCatalogoCuentas.do">htmlActionController</prop>
+        <!-- Guias -->
+        <prop key="/modules/Contabilidad/Guias/PrincipalCatalogoGuias.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Guias/MantenimientoCatalogoGuias.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Guias/MantenimientoEstructuraCatalogoGuias.do">htmlActionController</prop>
+        <!-- Transacciones -->
+        <prop key="/modules/Contabilidad/Transacciones/PrincipalTransacciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Transacciones/MantenimientoTransacciones.do">htmlActionController</prop>
+        <!-- Operaciones -->
+        <prop key="/modules/Contabilidad/Operaciones/PrincipalOperaciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Operaciones/MantenimientoOperaciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Operaciones/MantenimientoEstructuraOperaciones.do">htmlActionController</prop>
+        <!-- Matriz -->
+        <prop key="/modules/Contabilidad/Matriz/PrincipalMatrizCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Matriz/MantenimientoMatrizCuentas.do">htmlActionController</prop>
+        <!-- Conceptos -->
+        <prop key="/modules/Contabilidad/Conceptos/PrincipalEntesConceptosContInst.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Conceptos/MantenimientoEntesConceptosContInst.do">htmlActionController</prop>
+        <!-- Reportes Contabilidad -->
+        <prop key="/modules/Contabilidad/Reportes/PrincipalReportes.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanceGeneral.do">htmlActionController</prop>        
+        <prop key="/modules/Contabilidad/Reportes/BalanzaComprobacion.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanzaComprobacionEje.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanzaCuentasOrden.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanceFiso.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/EstadoResultados.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/EstadoResultadosMensual.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanceContable.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/ResumenMandatos.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/Concentracion.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/Poliza.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/AuxiliarPorCuenta.do">htmlActionController</prop>        
+        <prop key="/modules/Contabilidad/Reportes/EstadoVariaciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/MovimientosDiario.do">htmlActionController</prop>
+        <prop key="/jsp/Contabilidad/MovimientosDiario.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/EstadoCuenta.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/ReportePosicion.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/EnvioInfo.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/ContratosInversion.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/BalanzaDesglosada.do">htmlActionController</prop>
+        
+        <prop key="/modules/Contabilidad/Reportes/PrincipalReportes.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Reportes/PosicionporPeriodo.do">htmlActionController</prop>   
+        
+        <!-- Pestañas-->
+            <!-- Interfases-->
+            <prop key="/modules/Interfases/Interfases/PrincipalInterfases.do">htmlActionController</prop>
+            <!-- Administracion-->
+            <prop key="/modules/Administracion/Administracion/PrincipalAdministracion.do">htmlActionController</prop>
+            <!-- Formalizacion-->
+            <prop key="/modules/Formalizacion/Formalizacion/PrincipalFormalizacion.do">htmlActionController</prop>
+            <!-- Seguridad-->
+            <prop key="/modules/ControlGestion/Seguridad/PrincipalSeguridad.do">htmlActionController</prop>
+            <!--SAT-->
+            <prop key="/modules/Contabilidad/SAT/PrincipalSAT.do">htmlActionController</prop>
+            <!--Contabilidad-->
+            <prop key="/modules/Contabilidad/Contabilidad/PrincipalContabilidad.do">htmlActionController</prop>
+            <!--Operacion-->
+            <prop key="/modules/Operacion/Operacion/PrincipalOperacion.do">htmlActionController</prop>
+            <!--Operaciones Internet-->
+            <prop key="/modules/Contabilidad/OperacionInternet/PrincipalOperacionInternet.do">htmlActionController</prop>
+            <!--Tesoreria-->
+            <prop key="/modules/Tesoreria/Tesoreria/PrincipalTesoreria.do">htmlActionController</prop>
+            <!--Pensionados-->
+            <prop key="/modules/CuentasIndividuales/Pensionados/PrincipalPensionados.do">htmlActionController</prop>
+            <!--TRACs-->
+            <prop key="/modules/TRACs/TRACs/PrincipalTRACs.do">htmlActionController</prop>
+            <!--Honorarios-->
+            <prop key="/modules/Honorarios/Honorarios/PrincipalHonorarios.do">htmlActionController</prop>
+            <!--Emisión Titulos-->
+            <prop key="/modules/EmisionTitulos/EmisionTitulos/PrincipalEmisionTitulos.do">htmlActionController</prop>
+            <!--Régimen Fiscal-->
+            <prop key="/modules/Contabilidad/RegimenFiscal/PrincipalRegimenFiscal.do">htmlActionController</prop>
+            <!--Históricos-->
+            <prop key="/modules/Historicos/Historicos/PrincipalHistoricos.do">htmlActionController</prop>
+            <!--Catálogos-->
+            <prop key="/modules/ControlGestion/Catalogos/PrincipalCatalogos.do">htmlActionController</prop>
+        
+        <!--TRACs-->
+            <prop key="/modules/TRACs/Cartera/PrincipalCartera.do">htmlActionController</prop><!--Composición de Cartera-->
+            <prop key="/modules/TRACs/Resumen/PrincipalResumen.do">htmlActionController</prop><!--Resumen de Mensual-->
+            
+            <prop key="/modules/TRACs/Posicion/PrincipalPosicion.do">htmlActionController</prop><!--Consulta Posición-->
+            
+            <prop key="/modules/TRACs/Reportes/PrincipalReportes.do">htmlActionController</prop><!--Reportes-->
+            <prop key="/modules/TRACs/Reportes/ReporteCartera.do">htmlActionController</prop>
+            
+            <prop key="/modules/TRACs/Interfases/Protego/PrincipalProtego.do">htmlActionController</prop><!--Interfases-->
+            <prop key="/modules/TRACs/Interfases/Santander/PrincipalSantander.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/BolsaMexicana/PrincipalBolsaMexicana.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/Nafin/PrincipalNafin.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/Protego/ProtegoUpload.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/Santander/SantanderUpload.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/BolsaMexicana/BolsaMexicanaUpload.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/Nafin/NafinUpload.do">htmlActionController</prop>
+            
+            
+            <prop key="/modules/TRACs/Creaciones/PrincipalCreaciones.do">htmlActionController</prop><!--Creaciones-->
+            <prop key="/modules/TRACs/Redenciones/PrincipalRedenciones.do">htmlActionController</prop><!--Redenciones-->
+            <prop key="/modules/TRACs/Confirmaciones/PrincipalConfirmaciones.do">htmlActionController</prop><!--Confirmaciónes-->
+            <prop key="/modules/TRACs/Precios/PrincipalPrecios.do">htmlActionController</prop><!--Carga de Precios-->
+            <prop key="/modules/TRACs/Movimientos/PrincipalMovimientos.do">htmlActionController</prop><!--ConsultaMovimientos-->
+            <prop key="/modules/TRACs/OperacionesCustodio/PrincipalOperacionesCustodio.do">htmlActionController</prop><!--Operaciones con Custodio-->
+            <prop key="/modules/TRACs/Polizas/PrincipalOperativasPolizas.do">htmlActionController</prop><!--Pago Gastos-->
+            
+            
+            <prop key="/modules/TRACs/LineasCredito/PrincipalLineasCredito.do">htmlActionController</prop><!--Líneas de Crédito-->
+            <prop key="/modules/TRACs/LineasCredito/MantenimientoLineasCredito.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/LineasCreditoOperacion/PrincipalLineasCreditoOperacion.do">htmlActionController</prop><!--Líneas de Crédito Operacion-->
+            <prop key="/modules/TRACs/Futuros/PrincipalFuturos.do">htmlActionController</prop><!--Futuros-->
+            <prop key="/modules/TRACs/Sembrado/PrincipalSembrado.do">htmlActionController</prop><!--Sembrado-->
+            <prop key="/modules/TRACs/Valuacion/PrincipalValuacion.do">htmlActionController</prop><!--Valuacion-->
+            <prop key="/modules/TRACs/TraspasoTitulos/PrincipalTraspasoTitulos.do">htmlActionController</prop><!--Traspaso Titulos-->
+            <prop key="/modules/TRACs/Acreditaciones/PrincipalAcreditaciones.do">htmlActionController</prop><!--Acreditaciones-->
+            <prop key="/modules/TRACs/Acreditaciones/MantenimientoAcreditaciones.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Acreditados/PrincipalAcreditados.do">htmlActionController</prop><!--Acreditados-->
+            <prop key="/modules/TRACs/Acreditados/MantenimientoAcreditados.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Acreditados/ImageUpload.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Parametros/PrincipalParametros.do">htmlActionController</prop><!--Parámetros-->
+            <prop key="/modules/TRACs/Parametros/MantenimientoParametros.do">htmlActionController</prop>
+        	
+           <!-- Compras y Ventas -->
+           <prop key="/modules/TRACs/ComprasVentas/PrincipalComprasVentas.do">htmlActionController</prop>
+          
+            
+            <!-- Interfase Futuros -->
+            <prop key="/modules/TRACs/Interfases/Futuros/PrincipalFuturos.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Interfases/Futuros/FuturosUpload.do">htmlActionController</prop>
+            
+            <!-- Ventanas -->
+            <prop key="/modules/TRACs/Ventanas/PrincipalVentanas.do">htmlActionController</prop>
+            <prop key="/modules/TRACs/Ventanas/MantenimientoVentanas.do">htmlActionController</prop>
+          
+          <!--F_EMPRESA-->
+            <prop key="/modules/ControlGestion/ParametrosEmpresa/PrincipalParametrosEmpresa.do">htmlActionController</prop>
+            <prop key="/modules/ControlGestion/ParametrosEmpresa/MantenimientoParametrosEmpresa.do">htmlActionController</prop>
+          
+          <!--F_PPASWORD-->
+            <prop key="/modules/ControlGestion/ParametrosContrasena/PrincipalParametrosContrasena.do">htmlActionController</prop>
+            <prop key="/modules/ControlGestion/ParametrosContrasena/MantenimientoParametrosContrasena.do">htmlActionController</prop>
+            
+          
+          <!-- INICIO GARANTIAS -->
+            <prop key="/modules/Garantias/MenuGarantias/PrincipalGarantias.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/BienesGar/PrincipalBienesGar.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/BienesGar/MantenimientoBienesGar.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/BienesGarPagos/MantenimientoBienesGarPagos.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Garantias/PrincipalGarantias.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Garantias/MantenimientoGarantias.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/DerechosCobro/PrincipalDerechosCobro.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/DerechosCobro/MantenimientoDerechosCobro.do">htmlActionController</prop>
+            <prop key="/modules/ControlGestion/PrincipalBienesFideicomitidos.do">htmlActionController</prop>
+            <prop key="/modules/ControlGestion/MantenimientoBienesFideicomitidos.do">htmlActionController</prop>
+            
+            <!-- Entradas y Salidas -->
+            <prop key="/modules/Garantias/ControlAccionario/EntradasSalidas/PrincipalEntradasSalidas.do">htmlActionController</prop>
+           <!-- FIN GARANTIAS -->
+           
+          <!-- INICIO INMUEBLES -->
+        
+            <prop key="/modules/Garantias/Inmuebles/Liberacion/PrincipalUnidadesLiberacion.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/Liberacion/MantenimientoUnidadesLiberacion.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/Adquirentes/PrincipalAdquirentes.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/Adquirentes/MantenimientoAdquirentes.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/CargaDuplicar/PrincipalCargaDuplicar.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/CargaDuplicar/FileUpload.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/CargaMasiva/PrincipalCargaMasiva.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/CargaMasiva/FileUpload.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/PrincipalCargaMasiva.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/FileUpload.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/PrincipalUnidades.do">htmlActionController</prop>
+            <prop key="/modules/Garantias/Inmuebles/MantenimientoUnidades.do">htmlActionController</prop>
+          <!-- FIN INMUBLES-->
+            
+        <!-- Reporte interfase SALOMON -->
+        <prop key="/modules/Interfases/InterfaseSalomon/ReportePolizaSalomon.do">htmlActionController</prop>
+        
+         <!-- Interfase Valuacion -->
+        <prop key="/modules/Interfases/InterfaseValuacion/PrincipalInterfaseValuacion.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/InterfaseValuacion/ValuacionUpload.do">htmlActionController</prop>
+        
+        <!-- Interfase Creditos -->
+        <prop key="/modules/Interfases/InterfaseCreditos/PrincipalInterfaseCreditos.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/InterfaseCreditos/CreditosUpload.do">htmlActionController</prop>
+        <!-- Interfase Clientes -->
+        <prop key="/modules/Interfases/InterfaseClientes/PrincipalInterfaseClientes.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/InterfaseClientes/ClientesUpload.do">htmlActionController</prop>
+        
+        <!-- Consulta Saldos Fideicomiso -->
+        <prop key="/modules/Contabilidad/SaldosFideicomiso/PrincipalConsultaSaldosFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/SaldosFideicomiso/PrincipalConsultarConsultaSaldosFideicomiso.do">htmlActionController</prop>
+        
+        <!-- Consulta Saldos Historicos Fideicomiso -->
+        <prop key="/modules/Contabilidad/SaldosHFideicomiso/PrincipalConsultaSaldosHFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/SaldosHFideicomiso/PrincipalConsultarConsultaSaldosHFideicomiso.do">htmlActionController</prop>
+   
+        
+        <!-- Consulta Saldos Cuenta -->
+        <prop key="/modules/Contabilidad/SaldosCuenta/PrincipalConsultaSaldosCuenta.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/SaldosCuenta/PrincipalConsultarConsultaSaldosCuenta.do">htmlActionController</prop>
+        <!-- Consulta Movimientos -->
+        <prop key="/modules/Contabilidad/Movimientos/PrincipalConsultaMovimientos.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Movimientos/PrincipalConsultarConsultaMovimientos.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Movimientos/PrincipalDetalleValoresConsultarConsultaMovimientos.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Movimientos/PrincipalDetalleOperacionConsultarConsultaMovimientos.do">htmlActionController</prop>
+        <!-- Consulta Asientos -->
+        <prop key="/modules/Contabilidad/Asientos/PrincipalConsultaAsientos.do">htmlActionController</prop>
+        <!-- Consulta Operaciones No Existentes -->
+        <prop key="/modules/Contabilidad/OperacionesNoExistentes/PrincipalConsultaOperacionesNoExistentes.do">htmlActionController</prop>
+        <!-- Operativas Instrucciones Internet contabilizacion -->
+        <prop key="/modules/Contabilidad/InstruccionesInternetContabilizacion/PrincipalInstruccionesInternetContabilizacion.do">htmlActionController</prop>
+        <!-- Operativas Polizas -->
+        <prop key="/modules/Contabilidad/Polizas/PrincipalOperativasPolizas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Polizas/PrincipalPrevioAceptarOperativasPolizas.do">htmlActionController</prop>
+        <!-- Operativas Cancelacion Operaciones -->
+        <prop key="/modules/Contabilidad/CancelacionOperaciones/PrincipalCancelacionOperaciones.do">htmlActionController</prop>
+        <!-- Operativas Cancelacion Operaciones Internet-->
+        <prop key="/modules/Contabilidad/CancelacionOperacionesInternet/PrincipalCancelacionOperacionesInternet.do">htmlActionController</prop>
+        <!-- Operativas Bloqueo Operaciones -->
+        <prop key="/modules/Contabilidad/BloqueoOperaciones/PrincipalBloqueoOperacionesMesAnterior.do">htmlActionController</prop>
+        <!-- Cierre Contable Mes Anterior Fideicomiso -->
+        <prop key="/modules/Contabilidad/CierreContableMesAnterior/PrincipalCierreContableMesAnteriorFideicomiso.do">htmlActionController</prop>
+        <!-- Regimen Fiscal Cedula Fiscal -->
+        <prop key="/modules/Contabilidad/CedulaFiscal/PrincipalCedulaFiscalRegimenFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/CedulaFiscal/MantenimientoCedulaFiscalRegimenFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/CedulaFiscal/PrincipalObligacionesCedulaFiscalRegimenFiscal.do">htmlActionController</prop>
+        <!-- Regimen Fiscal Obligaciones Fiscales -->
+        <prop key="/modules/Contabilidad/ObligacionesFiscales/PrincipalObligacionesFiscalesRegimenFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/ObligacionesFiscales/MantenimientoObligacionesFiscalesRegimenFiscal.do">htmlActionController</prop>
+        <!-- Regimen Fiscal Tratamiento Fiscal -->
+        <prop key="/modules/Contabilidad/TratamientoFiscal/PrincipalTratamientoFiscalRegimenFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/TratamientoFiscal/MantenimientoTratamientoFiscalRegimenFiscal.do">htmlActionController</prop>
+        <!-- Regimen Fiscal Saldos SAT -->
+        <prop key="/modules/Contabilidad/SaldosSAT/PrincipalSaldosSAT.do">htmlActionController</prop>
+        <!-- Regimen Fiscal Utilidad / Perdida Fiscal SAT -->
+        <prop key="/modules/Contabilidad/UtilidadPerdidaFiscalSAT/PrincipalUtilidadPerdidaFiscalSAT.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/UtilidadPerdidaFiscalSAT/MantenimientoUtilidadPerdidaFiscalSAT.do">htmlActionController</prop>
+        <!-- Regimen Fiscal ArchivoS AT -->
+        <prop key="/modules/Contabilidad/ArchivoSAT/PrincipalArchivoSAT.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/ArchivoSAT/PrincipalPrevioArchivoSAT.do">htmlActionController</prop>
+        <!-- Interfase SIF -->
+        <prop key="/modules/Contabilidad/InterfaseSIF/PolizasInterfaseContableSIF.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/InterfaseSIF/EnviarInterfaseContableSIF.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/InterfaseSIF/ImprimirInterfaseContableSIF.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/InterfaseSIF/ApliconInterfaseContableSIF.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/InterfaseSICA/PrincipalInterfaseSICA.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/InterfaseSICA/PrincipalMantenimientoInterfasesSICA.do">htmlActionController</prop>
+        <!-- Bitacora SAT -->
+        <prop key="/modules/Contabilidad/Bitacora/PrincipalBitacora.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Bitacora/MantenimientoBitacora.do">htmlActionController</prop>
+        <!-- ParametrizacionArchivosSat -->
+        <prop key="/modules/Contabilidad/ParametrizacionArchivosSAT/PrincipalParamArchSat.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/ParametrizacionArchivosSAT/MantenimientoParamArchSat.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/ParametrizacionArchivosSAT/EstructuraParamArchSat.do">htmlActionController</prop>
+        <!-- Agrupaciones -->
+        <prop key="/modules/Contabilidad/Agrupaciones/PrincipalAgrupaciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Agrupaciones/MantenimientoAgrupaciones.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Agrupaciones/MantenimientoAgrupacionesCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Agrupaciones/AgrupaCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/Agrupaciones/AgrupaAgrupacion.do">htmlActionController</prop>
+        <!-- Agrupaciones Reporte-->
+        <prop key="/modules/Contabilidad/ReportesAgrupacion/PrincipalReporte.do">htmlActionController</prop>
+
+        <!-- Inicia modulo tesoreria -->
+        <!-- Instrumentos -->
+        <prop key="/modules/Tesoreria/Instrumentos/PrincipalCatalogoInstrumentos.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Instrumentos/MantenimientoCatalogoInstrumentos.do">htmlActionController</prop>
+        <!-- Emisiones -->
+        <prop key="/modules/Tesoreria/Emisiones/PrincipalCatalogoEmisiones.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Emisiones/MantenimientoCatalogoEmisiones.do">htmlActionController</prop>
+        <!-- Emisores -->
+        <prop key="/modules/Tesoreria/Emisores/PrincipalCatalogoEmisores.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Emisores/MantenimientoCatalogoEmisores.do">htmlActionController</prop>        
+        <!-- Intermediarios -->
+        <prop key="/modules/Tesoreria/Intermediarios/PrincipalCatalogoIntermediarios.do">htmlActionController</prop>        
+        <prop key="/modules/Tesoreria/Intermediarios/MantenimientoCatalogoIntermediarios.do">htmlActionController</prop>
+        <!-- Contratos de Inversion -->
+        <prop key="/modules/Tesoreria/ContratosInversion/PrincipalCatalogoContratosInversion.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/ContratosInversion/MantenimientoCatalogoContratosInversion.do">htmlActionController</prop>
+        <!-- Precios Mercado -->
+        <prop key="/modules/Tesoreria/PreciosMercado/PrincipalCatalogoPreciosMercado.do">htmlActionController</prop>
+        <!-- Tipos de Cambio -->
+        <prop key="/modules/Tesoreria/TiposCambio/PrincipalCatalogoTiposCambio.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/TiposCambio/MantenimientoCatalogoTiposCambio.do">htmlActionController</prop>
+        <!-- Compras y Ventas -->
+        <prop key="/modules/Tesoreria/ComprasVentas/PrincipalComprasVentas.do">htmlActionController</prop>
+        <!-- Reportos -->
+        <prop key="/modules/Tesoreria/Reportos/PrincipalReportos.do">htmlActionController</prop>
+        <!-- Pagares -->
+        <prop key="/modules/Tesoreria/Pagares/PrincipalPagares.do">htmlActionController</prop>
+        <!-- Entradas y Salidas -->
+        <prop key="/modules/Tesoreria/EntradasSalidas/PrincipalEntradasSalidas.do">htmlActionController</prop>
+        <!-- Vencimiento Manual Reportos -->
+        <prop key="/modules/Tesoreria/VencimientoManualReportos/PrincipalVencimientoManualReportos.do">htmlActionController</prop>
+        <!-- Consulta Posicion Contratos -->
+        <prop key="/modules/Tesoreria/PosicionContratos/PrincipalConsultaPosicionContratos.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/PosicionContratos/PrincipalConsultarConsultaPosicionContratos.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/PosicionContratos/PrincipalPosicionConsultarConsultaPosicionContratos.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/PosicionContratos/PrincipalReportosConsultarConsultaPosicionContratos.do">htmlActionController</prop>
+        <!-- Consulta Movimientos FOSEG -->
+        <prop key="/modules/Tesoreria/MovimientosFOSEG/PrincipalConsultaMovimientosFOSEG.do">htmlActionController</prop>
+        <!-- Interfase TAS -->
+        <prop key="/modules/Tesoreria/Interfaces/PrincipalTAS.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Interfaces/TasUpload.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Interfaces/TasAplicar.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/Interfaces/TasSubirArchivo.do">htmlActionController</prop>
+        
+        <!-- Interfase TEF -->
+        <prop key="/modules/Tesoreria/InterfaseTEF/PrincipalInterfaseTEF.do">htmlActionController</prop>
+        <!-- Interfase TEF via FFON -->
+        <prop key="/modules/Tesoreria/InterfaseTEFFFON/PrincipalInterfaseTEFFFON.do">htmlActionController</prop>
+        <!-- Instrucciones Internet Recibidas -->
+        <prop key="/modules/Tesoreria/InstruccionesInternetRecibidas/PrincipalInstruccionesInternetRecibidas.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/InstruccionesInternetRecibidas/PrincipalFichaUnicaInstruccionesInternetRecibidas.do">htmlActionController</prop>
+        <!-- Instrucciones Internet SWIFT -->
+        <prop key="/modules/Tesoreria/InstruccionesInternetSWIFT/PrincipalInstruccionesInternetSWIFTAceptadas.do">htmlActionController</prop>
+        <!-- Archivos Depositos -->
+        <prop key="/modules/Tesoreria/ArchivosDepositos/PrincipalArchivosDepositos.do">htmlActionController</prop>
+        <!-- Archivos Retiros -->
+        <prop key="/modules/Tesoreria/ArchivosRetiros/PrincipalArchivosRetiros.do">htmlActionController</prop>
+        <!-- Instrucciones Acuerdos Comite Tecnico -->
+        <prop key="/modules/Tesoreria/InstruccionesAcuerdosComiteTecnico/PrincipalInstruccionesAcuerdosComiteTecnico.do">htmlActionController</prop>
+        <!-- Cancelacion Instrucciones Internet -->
+        <prop key="/modules/Tesoreria/CancelacionInstruccionesInternet/PrincipalCancelacionInstruccionesInternet.do">htmlActionController</prop>
+        <!-- Conceptos FOSEG -->
+        <prop key="/modules/Tesoreria/ConceptosFOSEG/PrincipalCatalogoConceptosFOSEG.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/ConceptosFOSEG/MantenimientoCatalogoConceptosFOSEG.do">htmlActionController</prop>
+        <!-- Presupuesto Inicial FOSEG -->
+        <prop key="/modules/Tesoreria/PresupuestoInicialFOSEG/PrincipalPresupuestoInicialFOSEG.do">htmlActionController</prop>
+        <!-- Carga Inicial Saldos FOSEG -->
+        <prop key="/modules/Tesoreria/CargaInicialSaldosFOSEG/PrincipalCargaInicialSaldosFOSEG.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/CargaInicialSaldosFOSEG/FileUpload.do">htmlActionController</prop>
+        <!-- Reprogramacion Ejercido FOSEG -->
+        <prop key="/modules/Tesoreria/ReprogramacionEjercido/PrincipalReprogramacionEjercidoFOSEG.do">htmlActionController</prop>
+        <!-- Reintegro / Retiro Ejercicio FOSEG -->
+        <prop key="/modules/Tesoreria/ReintegroRetiro/PrincipalReintegroRetiroEjercicioAsignadoFOSEG.do">htmlActionController</prop>
+        <!-- Reestructuracion Saldos FOSEG -->
+        <prop key="/modules/Tesoreria/ReestructuracionSaldos/PrincipalReestructuracionSaldosFOSEG.do">htmlActionController</prop>
+        <!-- Carga Rendimientos FOSEG -->
+        <prop key="/modules/Tesoreria/CargaRendimientosFOSEG/PrincipalCargaRendimientosFOSEG.do">htmlActionController</prop>
+        <prop key="/modules/Tesoreria/CargaRendimientosFOSEG/MantenimientoCargaRendimientosFOSEG.do">htmlActionController</prop>
+        <!-- Inicia modulo control y gestion -->
+        <!-- Administracion de Cuentas -->
+        <prop key="/modules/ControlGestion/AdministracionCuentas/PrincipalAdministracionCuentas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/AdministracionCuentas/MantenimientoAdministracionCuentas.do">htmlActionController</prop>
+        <!-- Operaciones Fideicomiso -->
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/PrincipalOperacionesFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/PrincipalCuentasPersonasOperacionesFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/PrincipalCuentasFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/MantenimientoCuentasFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/PrincipalPersonasIFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/OperacionesFideicomiso/MantenimientoPersonasIFideicomiso.do">htmlActionController</prop>      
+        <!-- Reportes -->
+        <prop key="/modules/ControlGestion/Reportes/PrincipalReportesControlGestion.do">htmlActionController</prop>
+        
+        
+        
+       
+       <!-- PRUEBAS DE ALEJANDRO, BORRARLAS SI ES NECESARIO-->
+       
+       <prop key="/modules/ControlGestion/PrincipalSeguridadAlexPersonal.do">htmlActionController</prop>
+       
+       
+      <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  -->
+
+        <!-- Inicia modulo operacion -->
+        <!-- Planes -->
+        <prop key="/modules/Operacion/Planes/PrincipalCatalogoPlanes.do">htmlActionController</prop>
+        <prop key="/modules/Operacion/Planes/MantenimientoCatalogoPlanes.do">htmlActionController</prop>
+        <!-- Consulta Bitacora Operativa -->
+        <prop key="/modules/Operacion/BitacoraOperativa/PrincipalConsultaBitacoraOperativa.do">htmlActionController</prop>
+        <!-- Ejecutor Planes -->
+        <prop key="/modules/Operacion/EjecutorPlanes/PrincipalEjecutorPlanes.do">htmlActionController</prop>
+        <!-- Abrir Sistema -->
+        <prop key="/modules/Operacion/AbrirSistema/PrincipalAbrirSistema.do">htmlActionController</prop>
+        <!-- Cerrar Sistema -->
+        <prop key="/modules/Operacion/CerrarSistema/PrincipalCerrarSistema.do">htmlActionController</prop>
+        <!--MODULO DE FORMALIZACION-->
+        <prop key="/modules/Formalizacion/PrincipalProspectos.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectos.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosAnteproyecto.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosAnteproyectoGenerales.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosAnteproyectoCaracteristicas.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosFideicomitentes.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosFideicomitentes.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosFideicomisarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosFideicomisarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosNotarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosNotarios.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/PrincipalProspectosPoderes.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosPoderesOtorgamientoRevocacion.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosPoderesSolicitudOtorgamiento.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosPoderesOtorgamiento.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosPoderesSolicitudRevocacion.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/MantenimientoProspectosPoderesRevocacion.do">htmlActionController</prop>
+        <!--MODULO DE ADMINISTRACION-->
+        <prop key="/modules/Administracion/PrincipalFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoFideicomisos2.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalAtencionFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalConsultaHonorariosFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalContactosFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoContactosFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalFideicomitentes.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoFideicomitentes.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/Direcciones/PrincipalDirecciones.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/Direcciones/MantenimientoDirecciones.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalFideicomisarios.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoFideicomisarios.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalTerceros.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoTerceros.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalMiembrosComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoMiembrosComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalCalendarioSesionesComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoCalendarioSesionesComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalFinalidadesContrato.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoFinalidadesContrato.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/PrincipalSubCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/MantenimientoSubCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/CharolaSolicitudAdmon/CharolaSolicitudAdmon.do">htmlActionController</prop>
+        
+        <!--GARANTIAS-->
+        
+        <prop key="/modules/Administracion/GarantiasLiquidas/PrincipalGarantiasLiquidas.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/GarantiasLiquidas/MantenimientoGarantiasLiquidas.do">htmlActionController</prop> 
+        <prop key="/modules/Administracion/GarantiasLiquidas/CargaMasiva/PrincipalCargaGarantiasLiquidas.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/GarantiasLiquidas/CargaMasiva/GarantiasLiquidasUpload.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/GarantiasLiquidas/Creditos/PrincipalCreditos.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/GarantiasLiquidas/Disposiciones/PrincipalDisposiciones.do">htmlActionController</prop>
+        
+        <prop key="/modules/Administracion/GarantiasLiquidas/GarantiasLiquidas/PrincipalGarantiasLiquidas.do">htmlActionController</prop>
+        
+        <!-- Interfase Clientes -->
+        <prop key="/modules/Administracion/GarantiasLiquidas/CargaMasiva/InterfaseClientes/PrincipalInterfaseClientes.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/GarantiasLiquidas/CargaMasiva/InterfaseClientes/ClientesUpload.do">htmlActionController</prop>
+        
+        <!--MODULO DE HONORARIOS-->
+        <prop key="/modules/Honorarios/PrincipalParametrosHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoParametrosHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalPresupuestoAnualHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoPresupuestoAnualHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCatalogoDomicilioFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoCatalogoDomicilioFiscal.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCatalogoINPC.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoCatalogoINPC.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCatalogoDatosAvisos.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoCatalogoDatosAvisos.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCarteraContratoHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalComposicionCarteraContratoHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalConsultarCarteraContratoHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalFiduciariosGeneracionOtrosIngresosHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalPagoHonorariosConsulta.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalPagoHonorariosConsulta2.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCondonacionHonorarios.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalCondonacionHonorarios2.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/PrincipalFacturacion.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoAsignaFolioFacturacion.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoFacturacion.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/MantenimientoConfiguracionFacturacion.do">htmlActionController</prop>
+        <prop key="/modules/Honorarios/CancelacionOperacionesHonorarios/PrincipalCancelacionOperacionesHon.do">htmlActionController</prop>
+        <!--MODULO DE CONTROL Y GESTION-->
+        <prop key="/modules/ControlGestion/PrincipalConstitucion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoConstitucion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalExtincionControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoExtincionControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogoClavesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosClavesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosIndicesOficialesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosIndicesOficialesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosGeneralesEstructuraGeograficaEstados.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosGeneralesEstructuraGeograficaEstado.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosGeneralesEstructuraGeograficaDiasFeriados.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosGeneralesEstructuraGeograficaDiasFeriados.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosGeneralesEstructuraGeograficaPaises.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosGeneralesEstructuraGeograficaPaises.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosGeneralesEstructuraGeograficaNacionalidades.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosGeneralesEstructuraGeograficaNacionalidades.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosEjecutivosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosEjecutivosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogoGeneralesEstructuraGeograficaMonedas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogoGeneralesEstructuraGeograficaMonedas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalPersonalizaEncuestaControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoPersonalizaEncuestaControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalPersonalizaEncuestaIncisosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoPersonalizaEncuestaIncisosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalEncuestaOpcionesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoEncuestaOpcionesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/InternetAvisos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalAutorizacionesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoAutorizacionesControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalConfiguracionAccesoInternetControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalCatalogosGeneralesActividadesEconomicas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoCatalogosGeneralesActividadesEconomicas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadEstructuraControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadEstructuraControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadPersonal.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadPersonal.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadModulos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadModulos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadPuestos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadPuestos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadFuncionesXPuesto.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadFuncionesXPuesto.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadUsuariosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoSeguridadUsuariosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalSeguridadUsuariosInternet.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoUsuariosInternetPersonas.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/MantenimientoUsuariosInternetAsignacionFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalBitacoraControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/PrincipalTraspasoInterFideicomisosControlGestion.do">htmlActionController</prop>
+        <prop key="/modules/ControlGestion/clearMenuCache.do">htmlActionController</prop>
+        <!--MODULO DE HISTORICOS-->
+        <prop key="/modules/Historicos/ConsultaFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaFideicomitentes.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaFideicomisarios.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaTerceros.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaMiembrosComiteTecnico.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/ConsultaFinalidades.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/DetalleExtincion.do">htmlActionController</prop>
+        <prop key="/modules/Historicos/MantenimientoDetalleExtincion.do">htmlActionController</prop>
+        <!-- Inicia modulo cuentas individuales -->
+        <!-- Seleccion Fideicomiso de Cuentas Individuales -->
+        <prop key="/modules/CuentasIndividuales/CuentasIndividuales/PrincipalFideicomisosCuentasIndividuales.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/CuentasIndividuales/Submit.do">htmlActionController</prop>
+        <!-- Definicion Estructura -->
+        <prop key="/modules/CuentasIndividuales/DefinicionEstructura/PrincipalCatalogoDefinicionEstructura.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/DefinicionEstructura/MantenimientoCatalogoDefinicionEstructura.do">htmlActionController</prop>
+        <!-- Datos Operacion -->
+        <prop key="/modules/CuentasIndividuales/DatosOperacion/PrincipalCatalogoDatosOperacion.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/DatosOperacion/MantenimientoCatalogoDatosOperacion.do">htmlActionController</prop>
+        <!-- Definicion Niveles -->
+        <prop key="/modules/CuentasIndividuales/DefinicionNiveles/PrincipalDefinicionNiveles.do">htmlActionController</prop>
+        <!-- Definicion Nivel 1 -->
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel1/PrincipalCatalogoDefinicionNivel1.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel1/MantenimientoCatalogoDefinicionNivel1.do">htmlActionController</prop>
+        <!-- Definicion Nivel 2 -->
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel2/PrincipalCatalogoDefinicionNivel2.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel2/MantenimientoCatalogoDefinicionNivel2.do">htmlActionController</prop>
+        <!-- Definicion Nivel 3 -->
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel3/PrincipalCatalogoDefinicionNivel3.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/DefinicionNivel3/MantenimientoCatalogoDefinicionNivel3.do">htmlActionController</prop>
+        <!-- Movimientos Cuentas -->
+        <prop key="/modules/CuentasIndividuales/MovimientosCuentas/PrincipalMovimientosCuentas.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/MovimientosCuentas/MantenimientoMovimientosCuentas.do">htmlActionController</prop>
+        <!-- Traspaso Cuentas -->
+        <prop key="/modules/CuentasIndividuales/TraspasoCuentas/PrincipalTraspasoCuentas.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/TraspasoCuentas/MantenimientoTraspasoCuentas.do">htmlActionController</prop>
+        <!-- Carga Masiva Movimientos -->
+        <prop key="/modules/CuentasIndividuales/CargaMasivaMovimientos/PrincipalCargaMasivaMovimientos.do">htmlActionController</prop>    
+        <prop key="/modules/CuentasIndividuales/CargaMasivaMovimientos/FileUpload.do">htmlActionController</prop>      
+        <!-- Genera LOBO -->
+        <prop key="/modules/CuentasIndividuales/GeneraLOBO/PrincipalGeneraLOBO.do">htmlActionController</prop>
+        <!-- Cierre Mensual -->
+        <prop key="/modules/CuentasIndividuales/CierreMensual/PrincipalCierreMensual.do">htmlActionController</prop>
+        <!-- Saldos Inversionista -->
+        <prop key="/modules/CuentasIndividuales/SaldosInversionista/PrincipalSaldosInversionista.do">htmlActionController</prop>
+        <!-- Fideicomisos Cuentas Individuales -->
+        <prop key="/modules/CuentasIndividuales/FideicomisosCuentasIndividuales/PrincipalFideicomisosCuentasIndividuales.do">htmlActionController</prop>
+        <prop key="/modules/CuentasIndividuales/FideicomisosCuentasIndividuales/MantenimientoFideicomisosCuentasIndividuales.do">htmlActionController</prop>
+        <!-- Reportes -->
+        <prop key="/modules/CuentasIndividuales/Reportes/PrincipalReportesCuentasIndividuales.do">htmlActionController</prop>
+        
+        <!--INICIO EMISION DE TITULOS-->
+        
+        <!-- Interfase Vector -->
+        <prop key="/modules/EmisionTitulos/InterfaseVector/PrincipalInterfaseVector.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/InterfaseVector/VectorUpload.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/InterfaseVector/EnviarCorreo.do">htmlActionController</prop>
+        <!-- Interfase Vector -->
+        <!-- Programas -->
+        <prop key="/modules/EmisionTitulos/Programas/PrincipalProgramas.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Programas/MantenimientoProgramas.do">htmlActionController</prop>
+        <!-- Fideicomisos por Programa -->
+        <prop key="/modules/EmisionTitulos/FideicomisosPrograma/PrincipalFideicomisosPrograma.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/FideicomisosPrograma/MantenimientoFideicomisosPrograma.do">htmlActionController</prop>
+        <!-- Datos Generales de Emisiones -->
+        <prop key="/modules/EmisionTitulos/DatosGeneralesEmisiones/PrincipalDatosGenerales.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/DatosGeneralesEmisiones/MantenimientoDatosGenerales.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/DatosGeneralesEmisiones/MantenimientoFechasEmision.do">htmlActionController</prop>
+        <!-- Calificaciones -->
+        <prop key="/modules/EmisionTitulos/Calificaciones/PrincipalCalificaciones.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Calificaciones/MantenimientoCalificaciones.do">htmlActionController</prop>
+        <!-- Avisos a Autoridades -->
+        <prop key="/modules/EmisionTitulos/AvisosAutoridades/PrincipalAvisosAutoridades.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/AvisosAutoridades/MantenimientoAvisosAutoridades.do">htmlActionController</prop>
+        <!-- Parametros de Impresion -->
+        <prop key="/modules/EmisionTitulos/ParametrosImpresion/PrincipalParametrosImpresion.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/ParametrosImpresion/MantenimientoParametrosImpresion.do">htmlActionController</prop>
+        <!-- Formulas -->
+        <prop key="/modules/EmisionTitulos/Formulas/PrincipalFormulas.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Formulas/MantenimientoFormulas.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Formulas/MantenimientoEstructuraFormulas.do">htmlActionController</prop>
+        <!-- Asamblea -->
+        <prop key="/modules/EmisionTitulos/Asamblea/PrincipalAsamblea.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Asamblea/MantenimientoAsamblea.do">htmlActionController</prop>
+        <!-- Acta de Asamblea -->
+        <prop key="/modules/EmisionTitulos/ActaAsamblea/PrincipalActaAsamblea.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/ActaAsamblea/MantenimientoActaAsamblea.do">htmlActionController</prop>
+        <!-- Operaciones por Fiso -->
+        <prop key="/modules/Contabilidad/OperacionesPorFideicomiso/PrincipalOperacionesPorFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/OperacionesPorFideicomiso/MantenimientoOperacionesPorFideicomiso.do">htmlActionController</prop>
+        <!-- Parametros de Impresion -->
+        <prop key="/modules/EmisionTitulos/ParametrosImpresion/ParametrosImpresion.do">htmlActionController</prop>
+        <!-- Parametros de Calculo -->
+        <prop key="/modules/EmisionTitulos/ParametrosCalculo/PrincipalParametrosCalculo.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/ParametrosCalculo/MantenimientoParametrosCalculo.do">htmlActionController</prop>
+        <!-- Tasas de Rendimiento -->
+        <prop key="/modules/EmisionTitulos/TasasRendimiento/PrincipalTasasRendimiento.do">htmlActionController</prop>
+        <!-- Instrumentos -->
+        <prop key="/modules/EmisionTitulos/Instrumentos/PrincipalInstrumentos.do">htmlActionController</prop>
+        <!-- Proteccion Vs Inflacion -->
+        <prop key="/modules/EmisionTitulos/ProteccionVsInflacion/PrincipalProteccionVsInflacion.do">htmlActionController</prop>
+        <!-- Amortizacion -->
+        <prop key="/modules/EmisionTitulos/Amortizacion/PrincipalAmortizacion.do">htmlActionController</prop>
+        <!-- Dias Feriados Paises -->
+        <prop key="/modules/EmisionTitulos/DiasFeriadosPaises/PrincipalDiasFeriadosPaises.do">htmlActionController</prop>
+        <!-- Pagos -->
+        <prop key="/modules/EmisionTitulos/Pagos/PrincipalPagos.do">htmlActionController</prop>
+        
+        <!-- Reporte de Distribucion -->
+        <prop key="/modules/EmisionTitulos/ReporteDistribucion/PrincipalReporteDistribucion.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/ReporteDistribucion/MantenimientoReporteDistribucion.do">htmlActionController</prop>
+        <!-- Flujo de Cobranza -->
+        <prop key="/modules/EmisionTitulos/FlujoCobranza/PrincipalFlujoCobranza.do">htmlActionController</prop>
+        <!-- Estadistica de Morosidad -->
+        <prop key="/modules/EmisionTitulos/EstadisticaMorosidad/PrincipalEstadisticaMorosidad.do">htmlActionController</prop>
+        <!-- Otros Eventos -->
+        <prop key="/modules/EmisionTitulos/OtrosEventos/PrincipalOtrosEventos.do">htmlActionController</prop>
+        <!-- Calculo de Pago -->
+        <prop key="/modules/EmisionTitulos/CalculoPago/PrincipalCalculoPago.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/CalculoPago/MantenimientoCalculoPago.do">htmlActionController</prop>
+        <!-- Gastos Periodo -->
+        <prop key="/modules/EmisionTitulos/GastosPeriodo/PrincipalGastosPeriodo.do">htmlActionController</prop>
+        <!-- Calculo de Intereses -->
+        <prop key="/modules/EmisionTitulos/CalculoIntereses/PrincipalCalculoIntereses.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/CalculoIntereses/MantenimientoCalculoIntereses.do">htmlActionController</prop>
+        <!-- Calendario de Pagos -->
+        <prop key="/modules/EmisionTitulos/CalendarioPagos/PrincipalCalendarioPagos.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/CalendarioPagos/MantenimientoCalendarioPagos.do">htmlActionController</prop>
+        <!-- Indices -->
+        <prop key="/modules/EmisionTitulos/Indices/PrincipalCatalogoIndices.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Indices/MantenimientoCatalogoIndices.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Indices/MantenimientoEstructuraCatalogoIndices.do">htmlActionController</prop>
+        <!-- Autoridades -->
+        <prop key="/modules/EmisionTitulos/Autoridades/PrincipalCatalogoAutoridades.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Autoridades/MantenimientoCatalogoAutoridades.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Autoridades/MantenimientoCatalogoResponsables.do">htmlActionController</prop>
+        <!-- Dias Feriados -->
+        <prop key="/modules/EmisionTitulos/DiasFeriados/PrincipalCatalogoDiasFeriados.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/DiasFeriados/MantenimientoCatalogoDiasFeriados.do">htmlActionController</prop>
+         <!-- Calendario -->
+        <prop key="/modules/EmisionTitulos/Calendario/PrincipalCalendario.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Calendario/MantenimientoCalendario.do">htmlActionController</prop>
+        
+        <!--EmisionTitulos.ConsultaCalendarioPagos.PrincipalConsultaCalendarioPagos     //faltante-->
+        
+        <!--AGENDA EMISION TITULOS-->
+        <prop key="/modules/EmisionTitulos/Agenda/PrincipalAgenda.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Agenda/MantenimientoAgenda.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Agenda/ReporteAgenda.do">htmlActionController</prop>
+
+
+        <!-- Mantto Nvo Emision -->
+        <prop key="/modules/EmisionTitulos/Emisores/PrincipalEmisores.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Emisores/MantenimientoEmisores.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Fideicomisos/PrincipalFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/Fideicomisos/MantenimientoFideicomisos.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/RepresentacionComun/PrincipalRepComun.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/RepresentacionComun/MantenimientoRepComun.do">htmlActionController</prop>
+          
+        <prop key="/modules/EmisionTitulos/IndicesOficiales/PrincipalIndicesOficiales.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/IndicesOficiales/MantenimientoIndicesOficiales.do">htmlActionController</prop>  
+        
+         <!-- Emisores Fideicomiso -->
+        <prop key="/modules/EmisionTitulos/EmisoresFideicomiso/PrincipalEmisoresFideicomiso.do">htmlActionController</prop>
+        <prop key="/modules/EmisionTitulos/EmisoresFideicomiso/MantenimientoEmisoresFideicomiso.do">htmlActionController</prop>       
+        
+        <!--FIN EMISION DE TITULOS-->
+        
+        
+        <!--EmisionTitulos.ConsultaCalendarioPagos.PrincipalConsultaCalendarioPagos     //faltante-->
+        
+        <!-- Interfaces -->
+        <prop key="/generarArchivoInterfase.do">exportFileController</prop>      
+      
+      <!--PROTEGO-->
+        <prop key="/modules/Administracion/Agenda/PrincipalAgenda.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/Agenda/MantenimientoAgenda.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/Agenda/ReporteAgenda.do">htmlActionController</prop>
+
+        <prop key="/modules/KYC/Conceptos/MantenimientoConceptos.do">htmlActionController</prop>
+        <prop key="/modules/KYC/Conceptos/PrincipalConceptos.do">htmlActionController</prop>
+        <prop key="/modules/KYC/MantenimientoCheckList.do">htmlActionController</prop>
+        <prop key="/modules/KYC/PrincipalCheckList.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/KYC/PrincipalCheckList.do">htmlActionController</prop>
+        <prop key="/modules/Formalizacion/KYC/MantenimientoCheckList.do">htmlActionController</prop>
+        
+
+        <prop key="/modules/Contabilidad/CuentasBancarias/PrincipalCuentas.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/CuentasBancarias/MantenimientoCuentas.do">htmlActionController</prop>
+        
+        <!--INTERFASES-->
+        <prop key="/modules/Interfases/InterfaseMains/PrincipalInterfaseMains.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/InterfaseSalomon/PrincipalInterfaseSalomon.do">htmlActionController</prop>
+        <!---->
+        <prop key="/modules/Interfases/CashWindows/PrincipalCashWindows.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/CashWindows/CashSubirArchivo.do">htmlActionController</prop>
+        <prop key="/modules/Interfases/CashWindows/CashUpload.do">htmlActionController</prop>
+        
+        <!-- Conciliacion-->
+        <prop key="/modules/Operacion/Conciliacion/PrincipalInterfaseConciliacion.do">htmlActionController</prop>
+        <prop key="/modules/Operacion/Conciliacion/ConciliacionUpload.do">htmlActionController</prop>
+        <prop key="/modules/Operacion/Conciliacion/ReporteConciliacion.do">htmlActionController</prop>
+        <prop key="/modules/Operacion/Conciliacion/ReporteConciliacionExcel.do">htmlActionController</prop>
+        
+        <!--LAYOUT BANCOS-->
+        <prop key="/modules/Operacion/Conciliacion/LayoutBancos/PrincipalLayoutBancos.do">htmlActionController</prop>
+        <prop key="/modules/Operacion/Conciliacion/LayoutBancos/MantenimientoLayoutBancos.do">htmlActionController</prop>
+        
+        <!--OTROS-->
+        <prop key="/modules/Otros/PoliticasInversion/PrincipalPoliticasInversion.do">htmlActionController</prop>
+        <prop key="/modules/Otros/PoliticasInversion/MantenimientoPoliticasInversion.do">htmlActionController</prop>
+        
+        <prop key="/modules/Otros/Productos/PrincipalProductos.do">htmlActionController</prop>
+        <prop key="/modules/Otros/Productos/MantenimientoProductos.do">htmlActionController</prop>
+        <prop key="/modules/Otros/Productos/MantenimientoEstructuraProductos.do">htmlActionController</prop>
+        
+        <prop key="/modules/Otros/Productos/ProductoSerie/PrincipalProductoSerie.do">htmlActionController</prop>
+        <prop key="/modules/Otros/Productos/ProductoSerie/MantenimientoProductoSerie.do">htmlActionController</prop>
+        
+        <prop key="/modules/Otros/ActividadesRelevantes/PrincipalActividadesRelevantes.do">htmlActionController</prop>
+        <prop key="/modules/Otros/ActividadesRelevantes/MantenimientoActividadesRelevantes.do">htmlActionController</prop>
+        <prop key="/modules/Otros/OperacionesRelevantes/PrincipalOperacionesRelevantes.do">htmlActionController</prop>
+        
+        
+        <prop key="/modules/Otros/SeguimientoProyecto/PrincipalSeguimientoProyecto.do">htmlActionController</prop>
+        <prop key="/modules/Otros/SeguimientoProyecto/ReporteSeguimientoProyecto.do">htmlActionController</prop>
+        
+  
+        <prop key="/modules/Otros/ClonacionKYC/PrincipalClonacionKYC.do">htmlActionController</prop>
+        <!-- CONTROL-->
+        <prop key="/modules/Operacion/Control/PrincipalControl.do">htmlActionController</prop>
+        
+        
+        <prop key="/modules/Administracion/InformacionGerencial/PrincipalInfoGerencial.do">htmlActionController</prop>
+        <prop key="/modules/Administracion/InformacionGerencial/MantenimientoInfoGerencial.do">htmlActionController</prop>
+        
+        <!-- Vinta Pagos -->
+        <prop key="/modules/Vinta/Pagos/PrincipalPagos.do">htmlActionController</prop>
+      
+      </props>
+    </property>
+  </bean>
+  
+</beans>

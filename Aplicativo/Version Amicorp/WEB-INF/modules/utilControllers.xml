@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="objectController"
+		class="mx.gob.nafin.fiduciario.controller.ObjectDefinitionActionController">
+		<property name="methodNameResolver">
+			<ref bean="objectControllerResolver" />
+		</property>
+  </bean>
+  
+	<bean id="objectControllerResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/getObject.do">getObjectDefinition</prop>
+			</props>
+		</property>
+	</bean>
+  
+  <bean id="consultasController" class="mx.gob.nafin.fiduciario.controller.ConsultasController">
+		<property name="methodNameResolver">
+			<ref bean="consultasControllerResolver" />
+		</property>
+    <property name="genericDataAccessService">
+      <ref bean="genericDataAccessServiceBean" />
+    </property>
+  </bean>
+  
+	<bean id="consultasControllerResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/getRef.do">ejecutaConsulta</prop>
+        <prop key="/doRef.do">ejecutaQuery</prop>
+        <prop key="/executeRef.do">ejecutaProcedimiento</prop>
+			</props>
+		</property>
+	</bean>  
+  
+  <bean id="genericDataAccessServiceBeanMenu" class="mx.gob.nafin.fiduciario.business.services.GenericDataAccessService">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+    <property name="consultas">
+      <map>
+        <entry key="1" value="SELECT PAI_NUM_PAIS, PAI_NOM_PAIS FROM PAISES"/>
+      </map>      
+    </property>
+    <property name="parametros">
+      <map>
+        <!-- Ejemplo -->
+        <entry key="store">
+          <list>
+            <bean class="mx.gob.nafin.fiduciario.common.beans.ParametroQueryBean">
+              <property name="name"><value>sfechai</value></property>
+            </bean>
+          </list>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  
+  <!-- Controller que se encarga de generar el menu de acuerdo a el(los) puesto(s) del usuario -->
+  <bean id="menuController" class="mx.gob.nafin.fiduciario.controller.MenuController">
+    <property name="genericDataAccessService">
+      <ref bean="genericDataAccessServiceBeanMenu"/>
+    </property>  
+  </bean>
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fiduciario-config>
+<properties>
+    <property name="fopTransformerFactory">org.apache.xalan.processor.TransformerFactoryImpl</property>
+    <property name="toplinkSessionsFile">META-INF/sessions.xml</property>
+    <property name="toplinkSessionName">FiduciarioTxds</property>
+    <property name="LoadToplinkSessions">true</property>
+    <property name="systemDataSource">jdbc/fiduciaDSAlt</property>
+    <property name="defalutContentType">text/html; charset=ISO-8859-1</property>
+    <property name="defalutXMLContentType">text/xml; charset=ISO-8859-1</property>
+    <property name="mailAdministrador">admin@nafin.com</property>
+    <property name="mailSoporte">soporte@nafin.com</property>
+    <property name="MAIN_URL">soporte@nafin.com</property>
+    <property name="LogSystemOut">enabled</property>
+<!-- enabled/disabled -->
+    <property name="LogSecurityFilter">false</property>
+<!-- enabled/disabled -->
+  </properties>
+<messages>
+    <message code="500" type="ERROR">Error Fatal</message>
+  </messages>
+</fiduciario-config>

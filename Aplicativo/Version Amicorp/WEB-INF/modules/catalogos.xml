@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="catalogController"
+		class="mx.gob.nafin.fiduciario.controller.catalogos.CatalogManagerController">
+		<property name="methodNameResolver">
+			<ref bean="catalogResolver" />
+		</property>
+  </bean>
+  
+	<bean id="catalogResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/obtenerCatalogo.do">getItemCatalogo</prop>
+				<prop key="/altaCatalogo.do">altaCatalogo</prop>
+				<prop key="/bajaCatalogo.do">bajaCatalogo</prop>
+        <prop key="/modificaCatalogo.do">modificaCatalogo</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

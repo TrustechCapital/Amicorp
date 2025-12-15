@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="consultasGeneralesController"
+        class="mx.gob.nafin.fiduciario.controller.ConsultasGeneralesController">
+    <property name="methodNameResolver">
+      <ref bean="consultasGeneralesResolver"/>
+    </property>
+    <property name="consultaCombosFideicomisos" ref="consultasGenerales"/>
+  </bean>
+  <bean id="consultasGeneralesResolver"
+        class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+    <property name="mappings">
+      <props>
+        <prop key="/consultaCombosFideicomisos.do">consultaCombosFideicomisos</prop>
+        <prop key="/consultaAvanzada.do">consultaAvanzada</prop>
+        <prop key="/consultaCuentas.do">consultaCuentas</prop>
+        <prop key="/consultaCombo.do">consultaCombo</prop>
+        <prop key="/cargaComboProducto.do">cargaComboProducto</prop>
+        <prop key="/cargaComboActividad.do">cargaComboActividad</prop>
+        <prop key="/cargaComboGerencia.do">cargaComboGerencia</prop>
+        <prop key="/consultaNombreFideicomiso.do">consultaNombreFideicomiso</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="consultasGenerales"
+        class="mx.gob.nafin.fiduciario.common.business.ConsultasGenerales">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+    <property name="consultasCombos">
+      <map>
+        <entry key="queryTipoPersona">
+          <value>
+            SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=23
+          </value>
+        </entry>
+        <entry key="queryFormaManejo">
+          <value>
+            SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=24
+          </value>
+        </entry>
+        <entry key="queryTipoNegocio">
+          <value>
+             SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=36
+           </value>
+        </entry>
+        <entry key="queryClasifProducto">
+          <value>
+            SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=37
+          </value>
+        </entry>
+        <entry key="queryStatus">
+          <value>
+            SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=31
+          </value>
+        </entry>
+      </map>
+    </property>
+    <property name="queryAvanzado">
+      <value>
+        SELECT CTO_NUM_CONTRATO,CTO_CVE_TIPO_NEG,CTO_NOM_CONTRATO,CTO_CVE_CLAS_PROD,CTO_CVE_FORMA_MAN,CTO_CVE_TIPO_PER,CTO_CVE_ST_CONTRAT FROM CONTRATO
+      </value>
+    </property>
+    <property name="queryCombo">
+      <value>
+        SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=? ORDER BY CVE_DESC_CLAVE
+      </value>
+    </property>
+    <property name="queryProducto">
+      <value>
+        SELECT PRL_NUM_PRODUCTO,PRL_NOM_PRODUCTO FROM PRODUCTO WHERE PRL_TIPO_NEGOCIO=? AND PRL_CLASIF_PROD=? ORDER BY PRL_NOM_PRODUCTO
+      </value>
+    </property>
+    <property name="queryActividad">
+      <value>
+        SELECT ACT_NUM_RAMA,ACT_NOM_RAMA FROM ACTIVIDA ORDER BY ACT_NUM_RAMA
+      </value>
+    </property>
+    <property name="queryGerencia">
+      <value>
+        SELECT EST_DESC_NIVEL FROM ESTRUCTU WHERE EST_NUM_NIVEL1 > 0 AND EST_NUM_NIVEL2 > 0 AND EST_NUM_NIVEL3 > 0 AND EST_NUM_NIVEL4 > 0 AND EST_NUM_NIVEL5 = 0 ORDER BY EST_DESC_NIVEL
+      </value>
+    </property>
+    <property name="queryCuentas">
+      <value>
+        SELECT SAL_NUM_CTAM,SAL_NUM_SCTA,SAL_NUM_SSCTA,SAL_NUM_SSSCTA,SAL_NUM_SSSSCTA,SAL_NUM_SSSSSCTA,CUE_NOM_CTA SAL_NOM_CUENTA,SAL_NUM_AUX1,SAL_NUM_AUX2,SAL_NUM_AUX3,SAL_SALDO_INI_PER,SAL_CARGOS_PER,SAL_ABONOS_PER,SAL_IMP_SALDO_ACT
+        FROM SALDOS,CUENTACO WHERE SAL_NUM_CTAM=CUE_NUM_CTAM AND SAL_NUM_SCTA=CUE_NUM_SCTA AND SAL_NUM_SSCTA=CUE_NUM_SSCTA AND SAL_NUM_SSSCTA=CUE_NUM_SSSCTA AND SAL_NUM_SSSSCTA=CUE_NUM_SSSSCTA AND SAL_NUM_SSSSSCTA=CUE_NUM_SSSSSCTA AND SAL_NUM_AUX1 = ?
+      </value>
+    </property>
+    <property name="queryNombreFideicomiso">
+      <value>
+        SELECT CTO_NOM_CONTRATO FROM CONTRATO WHERE CTO_NUM_CONTRATO = ?
+      </value>
+    </property>
+  </bean>
+  <bean id="consultaCombosFideicomisosController"
+        class="mx.gob.nafin.fiduciario.administracion.ConsultaCombosFideicomisosController">
+    <property name="methodNameResolver">
+      <ref bean="consultaCombosFideicomisosResolver"/>
+    </property>
+    <property name="consultaCombosFideicomisos" ref="consultaCombosFideicomisos"/>
+  </bean>
+  <bean id="consultaCombosFideicomisosResolver"
+        class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+    <property name="mappings">
+      <props>
+        <prop key="/consultaCombosFideicomisos.do">consultaCombosFideicomisos</prop>
+        <prop key="/consultaAvanzada.do">consultaAvanzada</prop>
+        <prop key="/consultaAvanzadaFideicomisarios.do">consultaAvanzadaFideicomisarios</prop>
+        <prop key="/consultaCombo.do">consultaCombo</prop>
+        <prop key="/cargaComboProducto.do">cargaComboProducto</prop>
+        <prop key="/cargaComboActividad.do">cargaComboActividad</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="consultaCombosFideicomisos"
+        class="mx.gob.nafin.fiduciario.business.administracion.ConsultaCombosFideicomisos">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+    <property name="consultasCombos">
+      <map>
+        <entry key="queryTipoPersona"
+               value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=23"/>
+        <entry key="queryFormaManejo"
+               value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=24"/>
+        <entry key="queryTipoNegocio"
+               value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=36"/>
+        <entry key="queryClasifProducto"
+               value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=37"/>
+        <entry key="queryStatus"
+               value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=31"/>
+      </map>
+    </property>
+    <property name="queryAvanzado">
+      <value>
+        SELECT CTO_NUM_CONTRATO,CTO_CVE_TIPO_NEG,CTO_NOM_CONTRATO,CTO_NUM_PRODUCTO,CTO_CVE_FORMA_MAN,CTO_CVE_TIPO_PER,CTO_CVE_ST_CONTRAT FROM CONTRATO
+      </value>
+    </property>
+    <property name="queryAvanzadoFideicomisarios">
+      <value>
+        SELECT BEN_NUM_CONTRATO,BEN_BENEFICIARIO,BEN_NOM_BENEF,BEN_CVE_ST_BENEFIC FROM BENEFICI
+      </value>
+    </property>
+    <property name="queryCombo"
+              value="SELECT CVE_NUM_SEC_CLAVE,CVE_DESC_CLAVE FROM CLAVES WHERE CVE_NUM_CLAVE=?"/>
+    <property name="queryProducto"
+              value="SELECT PRL_NUM_PRODUCTO,PRL_NOM_PRODUCTO FROM PRODUCTO WHERE PRL_TIPO_NEGOCIO=? AND PRL_CLASIF_PROD=?"/>
+    <property name="queryActividad"
+              value="SELECT ACT_NUM_RAMA,ACT_NOM_RAMA FROM ACTIVIDA"/>
+  </bean>  
+</beans>

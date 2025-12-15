@@ -1,0 +1,2 @@
+<prop key="/modules/Contabilidad/BienesFideicomitidos/Liberacion/PrincipalUnidadesLiberacion.do">htmlActionController</prop>
+        <prop key="/modules/Contabilidad/BienesFideicomitidos/Liberacion/MantenimientoUnidadesLiberacion.do">htmlActionController</prop>

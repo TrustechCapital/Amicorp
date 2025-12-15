@@ -1,0 +1,786 @@
+body { 
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+	}
+
+a:visited {
+  color:  #006699;
+}
+a {  	
+  font-family: Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	font-weight: normal; 
+	color:  #006699; 
+	text-decoration: none;
+}
+
+a:hover {  	color: #FFC600; 
+			font-family: Arial, Helvetica, sans-serif; 
+			font-style: normal; 
+			font-size: 12px; 
+			font-weight: normal; 
+			text-decoration: none
+		}
+		
+input {
+	background-color:  #EEEEEE;
+	border: 1px solid #666666;
+	font-family: Arial, helvetica, sanserif; 
+	font-size: 12px;
+	color: #000000;
+	font-weight: normal;
+	valign: absmiddle;
+}
+
+
+select {
+	background: #EEEEEE;
+	background-color:  #EEEEEE;
+	border: 0px solid #666666;
+	font-family: Arial, helvetica, sanserif; 
+	font-size: 12px;
+	color: #000000;
+	font-weight: normal;
+}
+
+textarea {  
+		font-family: Arial, sans-serif; 
+		font-size: 12px; 
+		color: #000000; 
+		font-weight: 100; 
+		background: #EEEEEE;
+  	    background-color:  #EEEEEE;
+		height: 60px; width: 160px; 
+		border:1px solid #333333; 
+		border-style: solid
+		}
+
+
+.boton 
+		{
+		background: url('../imagenes/boton_new.png'); 
+		font-family: Calibri,Arial, Helvetica, sans-serif;
+     background-repeat:no-repeat;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+
+.boton_middle 
+		{
+		background: url('../imagenes/boton_middle.png'); 
+		font-family:  Calibri,Arial, Helvetica, sans-serif;
+     background-repeat:no-repeat;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+
+.boton_middleSobre 
+		{
+		background: url('../imagenes/boton_middleSobre.png'); 
+     background-repeat:no-repeat;
+		font-family:  Calibri,Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+.boton_leftSobre 
+		{
+		background: url('../imagenes/boton_leftSobre.png'); 
+     background-repeat:no-repeat;
+		font-family:  Calibri,Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+.boton_rightSobre 
+		{
+		background: url('../imagenes/boton_rightSobre.png'); 
+     background-repeat:no-repeat;
+		font-family:  Calibri,Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+
+.boton_left
+		{
+		background: url('../imagenes/boton_left.png'); 
+		font-family:  Calibri,Arial, Helvetica, sans-serif;
+     background-repeat:no-repeat;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+.boton_right
+		{
+		background: url('../imagenes/boton_right.png'); 
+		font-family: Calibri,Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+
+.CalendarioAgenda
+{
+  background: url('../imagenes/Calendario.png'); 
+		font-family: Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:40px;
+    height:40px;
+		font-weight: bold;
+		cursor:hand;
+}
+
+.ListaAgenda
+{
+  background: url('../imagenes/Lista.png'); 
+		font-family: Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:40px;
+    height:40px;
+		font-weight: bold;
+		cursor:hand;
+}
+
+.CalendarioAgendaSobre
+{
+  background: url('../imagenes/CalendarioSobre.png'); 
+		font-family: Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:40px;
+    height:40px;
+		font-weight: bold;
+		cursor:hand;
+}
+
+.ListaAgendaSobre
+{
+  background: url('../imagenes/ListaSobre.png'); 
+		font-family: Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:40px;
+    height:40px;
+		font-weight: bold;
+		cursor:hand;
+}
+
+.boton_x 
+		{
+		background: url('../imagenes/boton_new_x.png'); 
+		font-family: Calibri,Arial, Helvetica, sans-serif;
+    border: 0px;
+		font-size: 12px; 
+    width:112px;
+    height:24px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+
+.botonGris
+		{
+		background: #666666; 
+		border: 2px solid #CCCCCC; 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px; 
+		font-weight: bold;
+		color: #FFFFFF; 
+		cursor:hand;
+		}
+			
+.botonG10
+		{
+		background: #A8A8A8; 
+		border: 1px solid #666666; 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10px; 
+		color: #000033; 
+		cursor:hand;
+		}		
+						
+.texto {  
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: normal; 
+    }
+    
+.texto3 {
+    font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: normal; 
+    background: #C0C0C0;
+}
+				
+.textoAzul { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 10px; font-style: normal}
+.textoNegrita { 
+				font-family: Arial, helvetica, sanserif; 
+				color: #000000; 
+				font-size: 12px;  
+				font-weight: bolder; 
+
+			   }
+.textoNegritaWhite { 
+				font-family: Arial, helvetica, sanserif; 
+				color: #FFFFFF; 
+				font-size: 12px;  
+				font-weight: bolder; 
+
+			   }			   
+
+.texto_menu_inf { line-height: 130%; cursor: default; font-family: Arial, helvetica, sanserif; color: #4F6280; font-size: 3pt; text-decoration: none; clip: rect( ) ; font-weight: bold}
+
+
+.pie {  line-height: 120%; cursor: default; font-family: Arial, helvetica, sanserif; color: white; font-size: 9px;  font-weight: normal; text-decoration: none; clip:   rect(   )}
+
+.textohome2 {  line-height: 130%; cursor: default; font-family: Arial, helvetica, sanserif; color: #4F6280; font-size: 10px;  font-weight: normal; text-decoration: none; clip:   rect(   )}
+.texto2 { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 12px; font-style: normal}
+.celda01 {  line-height: 120%; cursor: default; font-family: Arial, helvetica, sanserif; color: #000033; font-size: 12px;  font-weight: normal; text-decoration: none;font-weight: bold; clip:   rect(   ) }
+
+.celda02 {  color: #000000; font-size: 10px; font-weight: normal; font-family: Arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#E6E6E6 }
+
+.celda03 {  color: #000000; font-size: 10px; font-weight: normal; font-family: Arial, helvetica, sanserif; font-style: regular; line-height: 110%}
+
+.celdaPregunta{  color: #000000; font-size: 12px; font-weight:bold; font-family: Arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#FFFFCC }
+
+.celdaInciso {  color: #000000; font-size: 10px; font-weight: normal; font-family: Arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#E6E6E6 }
+
+.mensaje { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #f3b12f; font-size: 9px; font-style: normal}
+
+.nota { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 12px; font-style: normal}
+
+.titulo { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #0A5796; font-size: 24px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+.titulo1 { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #0A5796; font-size: 18px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+.titulo2 {  line-height: 120%; font-family: Arial, helvetica, sanserif; color: #cccccc; font-size: 18px; cursor:pointer;  font-weight: bolder; text-decoration: none; clip:   rect(   )}
+
+.subtitulo { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #0A5796; font-size: 12px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+.fiso { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #003366; font-size: 13px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+.date { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 12px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+
+.Menu { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #0066CC; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.Menu:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #999900; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 
+			}
+
+.subMenu { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #FFFF66; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.subMenu:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #CCCCCC; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 
+			}
+			
+			
+
+.ref { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #527113; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.ref:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #f3b12f; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 			
+			}
+.alerta { font-family: Arial, Helvetica, sans-serif; color: #C60000; font-size: 13px; font-weight: bold;}
+
+
+.textoRP {  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: normal; 
+		}				
+
+.tituloRP{  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: bolder; 
+		}
+.tituloRP9{  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: bolder; 
+		}		
+.cabeceras { 	
+ 		cursor: default; 
+		font-family: Arial, Helvetica, sans-serif; 
+		background : url('../imagenes/barra_cabecera.png'); 
+		font-size: 12px; 
+		font-weight: 900; 
+    height:20px;
+		text-decoration: none; 
+		font-style: normal;
+    color:white;
+		
+		}
+.renglon1 { 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: bolder; 
+		background-color: white;
+		}
+.renglon2 { 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;
+    
+		font-weight: bolder; 
+		background-color: #E4E4E4;
+		}
+.renglonSeleccionado {
+  font-family: Arial, helvetica, sanserif; 
+  color: #000000; 
+  font-size: 12px;  
+  font-weight: bolder; 
+  background-color: #C8D3EB;
+}
+
+
+
+.pestaniaKYC{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesLateral.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 41px;
+		}
+    
+.pestaniaKYCSobre{
+  font-family: Arial, helvetica, sanserif; 
+  color: #ffffff; 
+  font-size: 10px;  
+  font-weight: bolder;
+  cursor:pointer;
+   background-image: url("../imagenes/PesLateralSobre.png");
+   background-repeat:no-repeat;
+   width: 168px;
+     height: 41px;
+}
+
+
+.pestaniaKYCIncompleto{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesLateralRoja.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 41px;
+		}
+    
+.pestaniaKYCIncompletoSobre{
+  font-family: Arial, helvetica, sanserif; 
+  color: #ffffff; 
+  font-size: 10px;  
+  font-weight: bolder; 
+  cursor:pointer;
+   background-image: url("../imagenes/PesLateralRojaSobre.png");
+   background-repeat:no-repeat;
+   width: 168px;
+     height: 41px;
+}
+
+.AcotacionesKYC{
+background-image:url("../imagenes/AcotacionesKYC.png"); 
+background-repeat:no-repeat;
+background-position: center center;
+}
+
+.pesConceptoGeneralKYC{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesSuperior.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     text-align:center;
+     height: 40px;
+		}
+  .pesConceptoGeneralBotonesKYC{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesSuperior.png");
+     background-repeat:no-repeat;
+     width: 30px;
+     text-align:center;
+     height: 40px;
+		}
+    
+    
+.pesConceptoGeneralKYCSobre{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesSuperiorSobre.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 40px;
+     text-align:center;
+     cursor:pointer;
+		}
+    
+.pesNuevoConceptoGeneralKYC{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesNuevoConceptoKYC.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 20px;
+		}
+    
+.pesNuevoConceptoGeneralKYCSobre{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesNuevoConceptoKYCSobre.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 20px;
+     cursor:pointer;
+		}
+    
+.pesNuevaCategoriaGeneralKYC{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesNuevaCategoriaKYC.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 20px;
+		}
+    
+.pesNuevaCategoriaGeneralKYCSobre{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesNuevaCategoriaKYCSobre.png");
+     background-repeat:no-repeat;
+     width: 168px;
+     height: 20px;
+     cursor:pointer;
+		}
+
+
+
+.renglonConcilia1 { 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: bolder; 
+		background-color: white;
+		}
+.renglonConcilia2 { 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: bolder; 
+    background-color: #FFD98A;
+		}
+
+.renglonConcilia3 { 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 12px;  
+		font-weight: bolder; 
+		background-color: #FF9D9D;
+		}
+
+.radio {
+  border: 0;
+  background-color: transparent;
+}
+.tab_blanco_claro {
+  background-image: url("../imagenes/tab_blanco_claro.gif");
+  width: 37px;
+}
+.tab_blanco_azul {
+  background-image: url("../imagenes/tab_blanco_azul.gif");
+  width: 37px;
+}
+.tab_relleno_azul {
+  background-image: url("../imagenes/relleno_azulr.gif");
+  vertical-align: middle;
+  text-align: center;
+  color: White;
+  font-size: 10pt;
+  cursor: hand;
+}
+.tab_azul_claro {
+  background-image: url("../imagenes/tab_azul_claro.gif");
+  width: 37px;      
+}
+.tab_relleno_claro {
+  background-image: url("../imagenes/relleno_claro.gif");
+  text-align: center;
+  color: White;  
+  font-size: 10pt;
+  cursor: hand;
+}
+.tab_link {
+  text-align: center;
+  color: White;
+  font-size: 10pt;
+}
+.tab_claro_claro_der {
+  background-image: url("../imagenes/tab_claro_claro_der.gif");
+  width: 37px;        
+}
+.tab_claro_blanco {
+  background-image: url("../imagenes/tab_claro_blanco.gif");
+  width: 35px;          
+}
+.tab_claro_azul {
+  background-image: url("../imagenes/tab_claro_azul.gif");
+  width: 34px;            
+}
+.tab_claro_claro_izq {
+  background-image: url("../imagenes/tab_claro_claro_izq.gif");
+  width: 34px;              
+}
+.tab_azul_blanco {
+  background-image: url("../imagenes/tab_azul_blanco.gif");
+  width: 35px;                
+}
+.check {
+  border: 0;
+  background-color: transparent;
+}
+.inputLocked {
+  border: 0;
+  background-color: transparent;
+  color: #000000; 
+  font-weight: bold;
+}
+.inputDislocked {
+  background-color:  #EEEEEE;
+	border: 1px solid #666666;
+	font-family: Arial, helvetica, sanserif; 
+	font-size: 12px;
+	color: #000000;
+	font-weight: normal;
+	valign: absmiddle;
+}
+.tablaDialogo {
+  border: 1px solid #666666;
+}
+#xpstyle{
+  background-color:#ece9d8;
+  padding: 1;
+}
+.tituloEncabezado {
+  font-size: 8pt;
+  color: #FFFFFF;
+}
+.tituloEncabezado2 {
+  font-size: 10pt;
+  color: #FFFFFF;
+  background-image: url("../imagenes/fondo.jpg");
+}
+
+
+
+.pestaniaEmision{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesLateralEmi.png");
+     background-repeat:no-repeat;
+     width: 134px;
+     height: 33px;
+		}
+    
+.pestaniaEmisionSobre{
+  font-family: Arial, helvetica, sanserif; 
+  color: #ffffff; 
+  font-size: 10px;  
+  font-weight: bolder;
+  cursor:pointer;
+   background-image: url("../imagenes/PesLateralSobreEmi.png");
+   background-repeat:no-repeat;
+   width: 134px;
+     height: 33px;
+}
+
+
+.pestaniaEmisionIncompleto{ 	
+		font-family: Arial, helvetica, sanserif; 
+		color: #ffffff; 
+		font-size: 10px;  
+		font-weight: bolder; 
+		 background-image: url("../imagenes/PesLateralRojaEmi.png");
+     background-repeat:no-repeat;
+     width: 134px;
+     height: 33px;
+		}
+    
+.pestaniaEmisionIncompletoSobre{
+  font-family: Arial, helvetica, sanserif; 
+  color: #ffffff; 
+  font-size: 10px;  
+  font-weight: bolder; 
+  cursor:pointer;
+   background-image: url("../imagenes/PesLateralRojaSobreEmi.png");
+   background-repeat:no-repeat;
+   width: 134px;
+     height: 33px;
+}
+
+.tituloPestania { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #44573B; font-size: 24px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal;}
+
+.subtituloPestania { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #A1AA9C; font-size: 20px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal;}
+.subtituloPestaniaSobre { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #44573B; font-size: 20px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal;cursor:pointer;}
+
+.sombraPestania 
+{ 
+  position:absolute;left:5px;top:2px;-ms-filter: progid:DXImageTransform.Microsoft.blur(pixelradius=2.3, makeShadow=true, ShadowOpacity=0.15);filter: progid:DXImageTransform.Microsoft.blur(pixelradius=2.3, makeShadow=true, ShadowOpacity=0.15);z-index:-1;
+}
+
+.divPantalla
+{
+position:relative;overflow:auto;background-position:bottom ;background-image:url(../imagenes/fondo_divPantalla.png);
+}
+.divPantallaDark
+{
+position:relative;overflow:auto;background-position:bottom ;background-image:url(../imagenes/fondo_divPantallaDark.png);
+}
+
+.cuadroTexto
+{
+  background-color:white; font-family: Arial, helvetica, sanserif; color: #000000;font-size: 14px;background-image:url(../imagenes/cuadroTexto_abajo.png);background-repeat:no-repeat;background-position:bottom; 
+}
+
+.fondoPrincipal
+{
+background-image:url(../imagenes/fondo_fiduciaweb_principal.jpg);background-repeat:no-repeat;
+}
+
+.btnSearch
+{
+		background: url('../imagenes/taskbar/search.png');
+		font-family: Calibri,Arial, Helvetica, sans-serif;
+    background-repeat:no-repeat;
+    border: 0px;
+		font-size: 12px; 
+    width:20px;
+    height:20px;
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+}
+/*control*/
+
+.cabeceraControl
+{
+    cursor: default; 
+		font-family: Arial, Helvetica, sans-serif; 
+		background : url('../imagenes/Operacion/cabeceraControl.png'); 
+		font-size: 12px; 
+		font-weight: 900; 
+    height:25px;
+		text-decoration: none; 
+		font-style: normal;
+    color:white;
+
+}

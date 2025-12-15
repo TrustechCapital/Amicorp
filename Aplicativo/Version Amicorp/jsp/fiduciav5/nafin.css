@@ -1,0 +1,236 @@
+body { 
+		font-family: arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 11px;  
+		font-weight: normal; 
+	}
+
+a {  	font-family: Arial, Helvetica, sans-serif; 
+		font-size: 12px;
+		font-weight: normal; 
+		color:  #006699; 
+		text-decoration: none
+	}
+
+a:hover {  	color: #FFC600; 
+			font-family: Arial, Helvetica, sans-serif; 
+			font-style: normal; 
+			font-size: 12px; 
+			font-weight: normal; 
+			text-decoration: none
+		}
+		
+input {
+	background: #EEEEEE;
+	background-color:  #EEEEEE;
+	border: 1px solid #666666;
+	font-family: arial, helvetica, sanserif; 
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+	valign: absmiddle
+}
+
+
+select {
+	background: #EEEEEE;
+	background-color:  #EEEEEE;
+	border: 1px solid #666666;
+	font-family: arial, helvetica, sanserif; 
+	font-size: 11px;
+	color: #000000;
+	font-weight: normal;
+}
+
+textarea {  
+		font-family: Arial, sans-serif; 
+		font-size: 11px; 
+		color: #000000; 
+		font-weight: 100; 
+		background: #EEEEEE;
+  	    background-color:  #EEEEEE;
+		height: 60px; width: 160px; 
+		border:1px solid #333333; 
+		border-style: solid
+		}
+
+
+.boton 
+		{
+		background: #006699; 
+		border: 1px solid #000066; 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px; 
+		color: #FFFFFF; 
+		font-weight: bold;
+		cursor:hand;
+		}
+
+.botonGris
+		{
+		background: #666666; 
+		border: 2px solid #CCCCCC; 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 11px; 
+		font-weight: bold;
+		color: #FFFFFF; 
+		cursor:hand;
+		}
+			
+.botonG10
+		{
+		background: #A8A8A8; 
+		border: 1px solid #666666; 
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10px; 
+		color: #000033; 
+		cursor:hand;
+		}		
+						
+.texto {  
+		font-family: arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 11px;  
+		font-weight: normal; 
+    }
+    
+.texto3 {
+    font-family: arial, helvetica, sanserif; 
+		color: #000000; 
+		font-size: 11px;  
+		font-weight: normal; 
+    background: #C0C0C0;
+}
+				
+.textoAzul { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 10px; font-style: normal}
+.textoNegrita { 
+				font-family: arial, helvetica, sanserif; 
+				color: #000000; 
+				font-size: 11px;  
+				font-weight: bolder; 
+
+			   }
+.textoNegritaWhite { 
+				font-family: arial, helvetica, sanserif; 
+				color: #FFFFFF; 
+				font-size: 11px;  
+				font-weight: bolder; 
+
+			   }			   
+
+.texto_menu_inf { line-height: 130%; cursor: default; font-family: arial, helvetica, sanserif; color: #4F6280; font-size: 3pt; text-decoration: none; clip: rect( ) ; font-weight: bold}
+
+
+.titulo {  line-height: 120%; cursor: default; font-family: arial, helvetica, sanserif; color: #527113; font-size: 12px;  font-weight: bolder; text-decoration: none; clip:   rect(   )}
+
+.pie {  line-height: 120%; cursor: default; font-family: arial, helvetica, sanserif; color: #99ADB8; font-size: 9px;  font-weight: normal; text-decoration: none; clip:   rect(   )}
+
+.textohome2 {  line-height: 130%; cursor: default; font-family: arial, helvetica, sanserif; color: #4F6280; font-size: 10px;  font-weight: normal; text-decoration: none; clip:   rect(   )}
+.texto2 { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 11px; font-style: normal}
+.celda01 {  line-height: 120%; cursor: default; font-family: arial, helvetica, sanserif; color: #000033; font-size: 11px;  font-weight: normal; text-decoration: none;font-weight: bold; clip:   rect(   ) }
+
+.celda02 {  color: #000000; font-size: 10px; font-weight: normal; font-family: arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#E6E6E6 }
+
+.celda03 {  color: #000000; font-size: 10px; font-weight: normal; font-family: arial, helvetica, sanserif; font-style: regular; line-height: 110%}
+
+.celdaPregunta{  color: #000000; font-size: 12px; font-weight:bold; font-family: arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#FFFFCC }
+
+.celdaInciso {  color: #000000; font-size: 10px; font-weight: normal; font-family: arial, helvetica, sanserif; font-style: regular; line-height: 110%; background-color:#E6E6E6 }
+
+.mensaje { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #f3b12f; font-size: 9px; font-style: normal}
+
+.nota { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 11px; font-style: normal}
+
+.titulo { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #0A5796; font-size: 24px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+.subtitulo { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 12px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+.fiso { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #003366; font-size: 13px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+.date { line-height: 120%; cursor: default; font-family: Arial, Helvetica, sans-serif; color: #527113; font-size: 11px; font-weight: 900; text-decoration: none; clip: rect( ) ; font-style: normal}
+
+
+.Menu { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #0066CC; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.Menu:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #999900; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 
+			}
+
+.subMenu { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #FFFF66; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.subMenu:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #CCCCCC; 
+			font-size: 12px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 
+			}
+			
+			
+
+.ref { 
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #527113; 
+			font-size: 11px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal
+		}
+.ref:hover {   
+			line-height: 120%;  
+			font-family: Arial, Helvetica, sans-serif; 
+			color: #f3b12f; 
+			font-size: 11px; 
+			font-weight: 900; 
+			text-decoration: none; 
+			clip: rect( ) ; 
+			font-style: normal; 			
+			}
+.alerta { font-family: Arial, Helvetica, sans-serif; color: #C60000; font-size: 13px; font-weight: bold;}
+
+
+.textoRP {  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: normal; 
+		}				
+
+.tituloRP{  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: bolder; 
+		}
+.tituloRP9{  
+		font-family: arial; 
+		color: #000000; 
+		font-size: 9px;  
+		font-weight: bolder; 
+		}		

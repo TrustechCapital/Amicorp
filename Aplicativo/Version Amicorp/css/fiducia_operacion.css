@@ -1,0 +1,31 @@
+
+/*
+   dvOperacion
+*/
+
+.dvOperacionTd
+{
+   font-size:12px;
+   font-family:Calibri,Arial, Helvetica, sans-serif; 
+   color:Black;
+   background-color:#C9DEF1;
+   cursor:default;
+   font-weight: bold;
+}
+
+.dvOperacionHeader
+{
+      
+      font-size:14px;
+       font-family:Calibri,Arial, Helvetica, sans-serif; 
+		background : url('../imagenes/Operacion/OperacionHeader.png');  background-position: top;
+      height:20px;
+      font-weight: bold;
+       cursor:default;
+      color:White;
+}
+.dvOperacionFooter
+{
+		background : url('../imagenes/Operacion/OperacionHeader.png'); background-position: bottom;
+      height:20px;
+}

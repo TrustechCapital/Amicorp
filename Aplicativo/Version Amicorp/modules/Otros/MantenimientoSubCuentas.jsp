@@ -1,0 +1,67 @@
+<FORM name="frmMantenimientoCatalogoSubCuentas" id="frmMantenimientoCatalogoSubCuentas" onsubmit="">
+  <table cellspacing="1" cellpadding="1" border="0" width="100%" align="center" style="height:auto;">
+    <tr>
+      <td align="center" height="100%" class="titulo">Mantenimiento Cambio de Nivel de Riesgo</td>
+    </tr>
+    <tr>
+      <td height="100%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="100%">
+        <table cellspacing="2" cellpadding="3" border="0" width="100%" class="texto">
+          <tr>
+            <td width="35%">&nbsp;</td>
+            <td width="8%" nowrap>No. Fideicomiso</td>
+            <td width="20%">
+              <input type="text" name="fcnFideicomiso" id="fcnFideicomiso" tipo="Num" size="10" maxlength="10" onblur="validarPkAlta(this);" required message="El Número de Fideicomiso es un campo obligatorio" onblur="verificaExistenciaRegistro();"/>
+            </td >
+            <td width="35%">
+              <div id="nomFideicomiso" class="textoNegrita" ref="conNomFid" fun="asignaValor2DivFideicomiso" param="divNombreFideicomisoParam">&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td width="35%">&nbsp;</td>
+            <td width="8%" nowrap>Tipo Persona</td>
+            <td>
+				<select size="1" name="fcnTipoPers" id="fcnTipoPers" ref="claves" fun="loadComboElement" keyValue="cveDescClave" theValue="cveDescClave" next="fcnNivelRiesgo" param="clavesCombo29"/>
+            </td>
+            <td width="5%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="35%">&nbsp;</td>
+            <td width="8%" nowrap>RFC</td>
+            <td>
+              <input type="text" name="fcnRfc" id="fcnRfc" tipo="AlphaNumeric" size="50" maxlength="500" required message="El RFC de la Persona es un campo obligatorio"/>
+            </td>
+            <td width="5%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="35%">&nbsp;</td>
+            <td width="8%" nowrap>Nivel Riesgo</td>
+            <td>
+			<select size="1" name="fcnNivelRiesgo" id="fcnNivelRiesgo" ref="claves" fun="loadComboElement" keyValue="cveDescClave" theValue="cveDescClave" next="loadCatalogo" param="clavesCombo1004"/>
+            </td>
+            <td width="5%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="35%">&nbsp;</td>
+            <td width="8%" nowrap>Motivo Cambio</td>
+            <td>
+              <input type="text" name="fcnMotivoCambio" id="fcnMotivoCambio" tipo="AlphaNumeric" size="250" maxlength="250" />
+            </td>
+            <td width="5%">&nbsp;</td>
+          </tr>
+		  </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="60%" height="100%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="100%" align="center">
+        <input type="BUTTON" value="Aceptar " id="cmdAceptar" name="cmdAceptar" class="boton" onclick="AltaOModificaInfo();" style="visibility:hidden"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="BUTTON" value="Cancelar" id="cmdCancelar" name="cmdCancelar" class="boton_x" onclick="showWaitLayer(); cargaPrincipalCatalogosGeneralEstructuraGeograficaPaises();" />
+      </td>
+    </tr>
+  </table>
+</FORM>

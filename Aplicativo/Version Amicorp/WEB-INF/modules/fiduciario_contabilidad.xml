@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="consultasGeneralesContabilidadController"
+        class="mx.gob.nafin.fiduciario.contabilidad.ConsultasGeneralesContabilidadController">
+    <property name="methodNameResolver">
+      <ref bean="consultasGeneralesContabilidadResolver"/>
+    </property>
+    <property name="consultas" ref="consultasGeneralesContabilidad"/>
+  </bean>
+  <bean id="consultasGeneralesContabilidadResolver"
+        class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+    <property name="mappings">
+      <props>
+        <prop key="/consultarPrincipalCatalogoCuentas.do">consultarPrincipalCatalogoCuentas</prop>
+        <prop key="/verificaCuentaVSGuia.do">verificaCuentaVSGuia</prop>
+        <prop key="/verificaNivelesCuenta.do">verificaNivelesCuenta</prop>
+        <prop key="/verificaExisteCuenta.do">verificaExisteCuenta</prop>
+        <prop key="/consultarPrincipalCatalogoGuias.do">consultarPrincipalCatalogoGuias</prop>
+        <prop key="/verificaExisteGuia.do">verificaExisteGuia</prop>
+        <prop key="/verificaGuiaVSTransaccion.do">verificaGuiaVSTransaccion</prop>
+        <prop key="/borraEstructuraGuia.do">borraEstructuraGuia</prop>
+        <prop key="/consultarPrincipalEstructuraGuia.do">consultarPrincipalEstructuraGuia</prop>
+        <prop key="/consultarPrincipalTransacciones.do">consultarPrincipalTransacciones</prop>
+        <prop key="/asignaValorSecuencial.do">asignaValorSecuencial</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="consultasGeneralesContabilidad"
+        class="mx.gob.nafin.fiduciario.business.contabilidad.ConsultasGeneralesContabilidad">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+    <property name="queryConsultarPrincipalCatalogoCuentas">
+      <value>
+        SELECT CUE_NUM_CTAM,CUE_NUM_SCTA,CUE_NUM_SSCTA,CUE_NUM_SSSCTA,CUE_NUM_SSSSCTA,CUE_NUM_SSSSSCTA,
+        NVL(CUE_NUM_AUX1,0) CUE_NUM_AUX1,NVL(CUE_NUM_AUX2,0) CUE_NUM_AUX2,NVL(CUE_NUM_AUX3,0) CUE_NUM_AUX3,CUE_NOM_CTA,
+        DECODE(NVL(CUE_CVE_ACREEDORA,''),'','NO',0,'NO',1,'SI',-1,'SI') CUE_CVE_ACREEDORA,
+        DECODE(NVL(CUE_CVE_DEUDORA,''),'','NO',0,'NO',1,'SI',-1,'SI') CUE_CVE_DEUDORA,
+        NVL(CUE_CVE_MOVTO_CTA,'-') CUE_CVE_MOVTO_CTA,NVL(CUE_CVE_ACUM_RUBRO,'-') CUE_CVE_ACUM_RUBRO,
+        CUE_ANO_ALTA_REG,CUE_MES_ALTA_REG,CUE_DIA_ALTA_REG,CUE_ANO_ULT_MOD,CUE_MES_ULT_MOD,CUE_DIA_ULT_MOD,
+        CUE_CVE_ST_CUENTA FROM CUENTACO 
+      </value>
+    </property>
+    <property name="queryVerificaCuentaVSGuia">
+      <value>
+        SELECT COUNT(1) NUM_GUIAS FROM GUIACONT WHERE GUI_NUM_CTAM = ? AND GUI_NUM_SCTA = ? AND GUI_NUM_SSCTA = ? AND
+        GUI_NUM_SSSCTA = ? AND GUI_NUM_SSSSCTA = ? AND  GUI_NUM_SSSSSCTA = ?
+      </value>
+    </property>
+    <property name="queryVerificaNivelesCuenta">
+      <value>
+        SELECT COUNT(1) NUM_NIVELES FROM CUENTACO 
+      </value>
+    </property>
+    <property name="queryVerificaExisteCuenta">
+      <value>
+        SELECT COUNT(1) AS EXISTE_CUENTA,NVL(CUE_NUM_AUX1,0) AS CUE_NUM_AUX1,NVL(CUE_NUM_AUX2,0) AS CUE_NUM_AUX2,
+        NVL(CUE_NUM_AUX3,0) AS CUE_NUM_AUX3 FROM CUENTACO
+      </value>
+    </property>
+    <property name="queryConsultarPrincipalCatalogoGuias">
+      <value>
+        SELECT GUN_NUM_GUIA,GUN_NOM_GUIA,GUN_CVE_ST_GUIANO FROM GUIANOM  
+      </value>
+    </property>
+    <property name="queryVerificaExisteGuia">
+      <value>
+        SELECT COUNT(1) EXISTE_REGISTRO FROM GUIANOM WHERE GUN_NUM_GUIA = ?
+      </value>
+    </property>
+    <property name="queryVerificaGuiaVSTransaccion">
+      <value>
+        SELECT COUNT(1) NUM_TRANSACCIONES FROM TRANSACC WHERE TRS_NUM_GUIA_CONT = ?
+      </value>
+    </property>
+    <property name="queryBorraEstructuraGuia">
+      <value>
+        DELETE FROM GUIACONT WHERE GUI_NUM_GUIA = ?
+      </value>
+    </property>
+    <property name="queryAsignaValorSecuencial">
+      <value>
+        SELECT NVL(MAX(GUI_NUM_SEC_ASIENT),0) + 1 AS NUM_SECUENCIAL FROM GUIACONT WHERE GUI_NUM_GUIA = ?
+      </value>
+    </property>
+    <property name="queryConsultarPrincipalEstructuraGuia">
+      <value>
+        SELECT GUI_NUM_GUIA,GUI_NUM_SEC_ASIENT,CUE_NOM_CTA GUI_NOM_CTA,GUI_NUM_CTAM,GUI_NUM_SCTA,GUI_NUM_SSCTA,GUI_NUM_SSSCTA,GUI_NUM_SSSSCTA,
+        GUI_NUM_SSSSSCTA,NVL(GUI_NUM_AUX1,'0') GUI_NUM_AUX1,NVL(GUI_NUM_AUX2,'0') GUI_NUM_AUX2,NVL(GUI_NUM_AUX3,'0') GUI_NUM_AUX3,
+        GUI_CVE_APLICA_DAT,GUI_CVE_CAR_ABO,GUI_DESC_ASIENTO,GUI_CVE_ST_GUIACON FROM GUIACONT,CUENTACO 
+        WHERE GUI_NUM_CTAM = CUE_NUM_CTAM AND GUI_NUM_SCTA = CUE_NUM_SCTA AND GUI_NUM_SSCTA = CUE_NUM_SSCTA
+        AND GUI_NUM_SSSCTA = CUE_NUM_SSSCTA AND GUI_NUM_SSSSCTA = CUE_NUM_SSSSCTA AND GUI_NUM_SSSSSCTA = CUE_NUM_SSSSSCTA
+        AND GUI_NUM_GUIA = ? ORDER BY GUI_NUM_SEC_ASIENT
+    </value>
+    </property>
+    <property name="queryConsultarTransacciones">
+      <value>
+        SELECT TRS_NUM_MODULO,TRS_NUM_TRANSAC,TRS_NOM_TRANSAC,TRS_NUM_GUIA_CONT,TRS_CVE_ST_TRANSAC,TRS_CVE_ACUM_ADCTA
+        FROM TRANSACC
+      </value>
+    </property>
+  </bean>
+</beans>

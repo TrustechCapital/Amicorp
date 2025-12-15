@@ -1,0 +1,6 @@
+.FERIADOS{ color: #830 !important; font-weight: bold }
+.ATENDIDO { color: #00f !important; font-weight: bold }
+.ACTIVO { color: #070 !important; font-weight: bold }
+.PENDIENTE{ color: #f00 !important; font-weight: bold }
+.birthday { background: #fff; font-weight: bold }
+.birthday.DynarchCalendar-day-selected { background: #89f; font-weight: bold }

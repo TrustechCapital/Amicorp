@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="consultasCatalogController"
+		class="mx.gob.nafin.fiduciario.controller.catalogos.ConsultasCatalogosController">
+		<property name="methodNameResolver">
+			<ref bean="consultasCatalogResolver" />
+		</property>
+    <property name="ejemploServicio" ref="EjemploServicioBean" />
+  </bean>
+  
+	<bean id="consultasCatalogResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/consultaPasies.do">consultaPasies</prop>
+        <prop key="/consultaAdv.do">consultaAvanzada</prop>
+			</props>
+		</property>
+	</bean>  
+
+  <bean id="EjemploServicioBean" class="mx.gob.nafin.fiduciario.business.test.EjemploServicoImpl">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+    <property name="queryPaises">
+      <value>
+        SELECT * FROM PAISES ORDER BY PAI_NUM_PAIS
+      </value>
+    </property>
+    <property name="queryAvanzado">
+      <value>
+        SELECT * FROM PAISES
+      </value>
+    </property>
+    <property name="consultas">
+      <map>
+          <entry key="queryPaises" value="SELECT * FROM PAISES"/>
+      </map>
+    </property>
+ </bean>  
+</beans>

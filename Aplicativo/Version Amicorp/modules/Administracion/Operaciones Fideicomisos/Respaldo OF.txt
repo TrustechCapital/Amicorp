@@ -1,0 +1,380 @@
+principalOperacionesFideicomiso.jsp________________________________________________-
+
+<form name="frmPrincipalReportes" id="frmPrincipalReportes" onsubmit="">
+  <table cellspacing="1" cellpadding="1" border="0" width="100%" align="center" style="height:auto;">
+    <tr>
+      <td align="center" height="100%" class="titulo">Reportes</td>
+    </tr>
+    <tr>
+      <td height="100%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="100%">
+        <table width="100%" class="texto">
+          <tr>
+            <td width="20%">&nbsp;</td>
+            <td width="20%" nowrap>Id Reporte</td>
+            <td>
+              <input type="text" size="10" name="paramIdReporte" id="paramIdReporte" maxlength="10" tipo="Num"/>
+            </td>
+            <td width="10%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="20%">&nbsp;</td>
+            <td width="20%" nowrap>Tipo</td>
+            <td>
+            <select size="1" name="paramTipo" id="paramTipo" ref="conETDatInd" fun="loadComboElement" keyValue="eindDescripcion" theValue="eindDescripcion" param="cmbTipoParam" next="paramStatus"/>
+            </td>
+            <td width="10%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="20%">&nbsp;</td>
+            <td width="20%" nowrap>Nombre</td>
+            <td>
+              <input type="text" size="20" name="paramNombre" id="paramNombre" maxlength="20"/>
+            </td>
+            <td width="10%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="20%">&nbsp;</td>
+            <td width="20%" nowrap>Estado</td>
+            <td>
+               <select size="1" name="paramStatus" id="paramStatus" ref="conETDatInd" fun="loadComboElement" keyValue="eindDescripcion" theValue="eindDescripcion" param="cmbStatusParam" next="formsLoaded"/>
+            </td>
+            <td width="10%">&nbsp;</td>
+          </tr>
+          
+          <tr>
+            <td colspan="4">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" colspan="4">&nbsp;
+              
+              <input type="button" value="Aceptar" name="cmdAceptar" id="cmdAceptar" class="boton" ref="conPriReportes" fun="loadTableElement" tabla="tblRegPriCedFis" onclick="consultar(this, frmPrincipalReportes, false);"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <!--<input type="button" value="Aceptar" name="cmdAceptar" id="cmdAceptar" class="boton" ref="muestraDatosMonedas" fun="loadTableElement" tabla="tblRegPriCedFis" onclick="consultar(this, frmPrincipalReportes, false);"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+              <!--<input type="button" value="Aceptar" name="cmdAceptar" id="cmdAceptar" class="boton" ref="conPriCedFis" fun="loadTableElement" tabla="tblRegPriCedFis" onclick="consultar(this, frmPrincipalReportes, false);"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+              <input type="button" value="Limpiar" name="cmdLimpiar" id="cmdLimpiar" class="boton" onclick="limpiar(frmPrincipalReportes);"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="subtitulo" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="100%" align="center" colspan="4">
+              <input type="button" value="   Alta  " name="cmdAlta" class="boton" onclick="cargaMantenimientoReportes(1);"/>
+              <input type="button" value="Modificar" name="cmdModificar" class="boton" onclick="cargaMantenimientoReportes(2);"/>
+              <input type="button" value="   Baja  " name="cmdBaja" class="boton" onclick="eliminarRegistro();"/>
+              <input type="button" value="Consultar" name="cmdConsultar" class="boton" onclick="cargaMantenimientoReportes(3);"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="subtitulo" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tr class="cabeceras">
+                  <td width="23" nowrap>&nbsp;</td>
+                  <td width="106" nowrap>Id. Reporte</td>
+                  <td width="107" nowrap>Tipo</td>
+                  <td width="89" nowrap>Formato</td>
+                  <td width="88" nowrap>Nombre</td>
+                  <td width="300" nowrap>Estado</td>
+                 
+                </tr>
+              </table>
+              <div style="height:150px; overflow:auto; position:relative; vertical-align:top; width:900px">
+                
+                <table border="0" cellpadding="0" cellspacing="0" class="texto" id="tblRegPriCedFis" dataInfo="tablaDatosReportes" keys="frepIdReporte" fun="clickTabla" radioWidth="23px" NoRecordsMsg="No existen Registros para estos criterios de búsqueda"> 
+                </table>
+                
+                <!--<table border="0" cellpadding="0" cellspacing="0" class="texto" id="tblRegPriCedFis" dataInfo="tablaDatosReportes" keys="monNomMoneda,monNumPais" fun="clickTabla" radioWidth="23px" NoRecordsMsg="No existen Registros para estos criterios de búsqueda">
+                </table>-->
+                
+                <!--<table border="0" cellpadding="0" cellspacing="0" class="texto" id="tblRegPriCedFis" dataInfo="arrTblCedFisDat" keys="crfNumFideicom,trfCveTratfisc" fun="clickTabla" radioWidth="23px" NoRecordsMsg="No existen Registros para estos criterios de búsqueda">
+                </table>-->
+              
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+
+principalOperacionesFideicomiso.js_____________________________________________________
+
+
+
+//showWaitLayer();
+var catReportes = new Catalogo("mx.com.inscitech.fiducia.domain.FReportes")
+//var catMonedas = new Catalogo("mx.com.inscitech.fiducia.domain.Monedas");var catCedrefis = new Catalogo("mx.com.inscitech.fiducia.domain.Cedrefis");
+//var catTratFid = new Catalogo("mx.com.inscitech.fiducia.domain.TratFid");
+//var catOblFid = new Catalogo("mx.com.inscitech.fiducia.domain.OblFid");
+//var catFReportes = new Catalogo("mx.com.inscitech.fiducia.domain.FReportes");
+
+//var cmbObligacionesFiscalesParam = JSON.parse("{\"chido\":140}");
+//var cmbParticipacionParam = JSON.parse("{\"chido\":141}");
+var cmbTipoParam = JSON.parse("{\"Indice\":650,\"orderDescripcion\":\"s\"}");
+var cmbFormatoParam = JSON.parse("{\"Indice\":651,\"orderDescripcion\":\"s\"}");
+
+//var cmbTipoParam= JSON.parse("{\"indice\":560}");
+//var clavesCombo31 = JSON.parse("{\"llaveClave\":31}");
+//var divNombreFideicomisoParam;
+//var trfCveTratfisc;
+initForms();
+
+var tablaDatosReportes = new Array();
+tablaDatosReportes[0] = "frepIdReporte,106px";
+tablaDatosReportes[1] = "eindDescripcion, 107px";
+tablaDatosReportes[2] = "eindDescripcion2,89px";
+tablaDatosReportes[3] = "frepNombre,98px";
+tablaDatosReportes[4] = "frepEstado,300px";
+
+
+
+var fvCatReportes = new FormValidator();
+//var strIdPK = "crfNumFideicom,trfCveTratfisc";
+//var arrIdPK = strIdPK.split(",");
+var tipoPantalla = 0;
+var operacion = 0;
+var numPantalla = 0;
+pkInfo = null;
+
+fvCatReportes.setup({
+  formName      : "frmMantenimientoReportes",
+  tipoAlert     : 1,
+  alertFunction : BaloonAlert,
+  sendObjToAlert: true
+});
+
+function cargaPrincipalOperacionesFideicomisos() {
+  onButtonClick("Contabilidad.OperacionesFideicomisos.PrincipalOperacionesFideicomisos","");
+  hideWaitLayer();
+}
+
+function clickTabla(pk){
+  //trfCveTratfisc = pk.trfCveTratfisc;
+  
+  pkInfo = pk;
+  //alert("funcion pkinfo funcionando. valor de la pk = "+pkInfo);
+  cloneObject(pk,catReportes.getCatalogo());
+}
+
+/*function limpiar(objForma){
+  RF(objForma);
+  catReportes = new Catalogo("mx.com.inscitech.fiducia.domain.Cedrefis");
+  pkInfo = null;
+}*/
+var CONSULTAR = 3;
+function cargaMantenimientoReportes(tipoPantalla){
+  if ((tipoPantalla==OPER_MODIFICAR || tipoPantalla==CONSULTAR) && pkInfo==null)
+    alert("No ha seleccionado campo alguno de la tabla");
+  else
+  {
+    alert("valor de la PK = "+pkInfo+" EL VALOR DEL TIPO PANTALLA ES "+tipoPantalla);
+    operacion = tipoPantalla;
+    numPantalla = 1;
+    //showWaitLayer();
+    var urlCliente = ctxRoot + "/modules/Contabilidad/OperacionesFideicomisos/MantenimientoOperacionesFideicomisos.do";
+    makeAjaxRequest(urlCliente, "HTML", despliegaPantalla, null);
+  }
+}
+
+
+function despliegaPantalla(obj, result) {
+  alert("funcion despliegaPantalla() invocada");
+  GI("dvContenido").innerHTML = result;
+  initForms();
+  
+  //Agregando la funcionalidad del required
+  fvCatReportes.setup({
+    formName      : "frmMantenimientoReportes",
+    tipoAlert     : 1,
+    alertFunction : BaloonAlert,
+    sendObjToAlert: true
+  });
+  //loadCatalogo();
+}
+
+
+function loadCatalogo() {
+  alert("funcion loadCatalogo activada");
+  catReportes.setOnUpdate(catLoaded);
+  if(operacion==OPER_MODIFICAR || operacion==CONSULTAR)
+    catReportes.buscaCatalogoPK(false);
+  else
+  {
+    muestraObjs("cmdAceptar,cmdCancelar"); //Mostrar el botón Aceptar y Cancelar
+    formsLoaded();
+  }
+}
+
+
+function catLoaded() {
+  if(operacion==OPER_MODIFICAR)//Si se trata de una modificación, no permitir modificar la PK
+  {
+    alert("hola update");
+    muestraObjs("cmdAceptar,cmdCancelar"); //Mostrar el botón Aceptar
+    deshabilitaPK("frepIdReporte".split(","));
+  }
+  else if(operacion==CONSULTAR)//Si se trata de una consulta, deshabilitar
+  {
+    alert("hola consulta");
+    SA(GI("cmdCancelar"), "value", "Regresar");//Colocar la leyenda Regresar en vez de Cancelar al botón
+    deshabilitaObjetos(GI("frmMantenimientoReportes"));         //Deshabilita objetos (excepto botones)
+  }
+  muestraObjs("cmdCancelar"); //Mostrar el botón Regresar
+  formsLoaded();
+}
+
+
+function operacionExitosa() {
+  alert("La operación se realizó correctamente");
+  cargaPrincipalOperacionesFideicomisos();
+  hideWaitLayer();
+}
+
+function eliminarRegistro() {
+  if(pkInfo==null)
+    alert("No se ha seleccionado campo alguno de la tabla");
+  else
+  {
+    alert("Funcion eliminaRegistro() activada");
+    catReportes.setOnUpdate(operacionExitosa);
+    showWaitLayer();
+    eliminaCatalogo(catReportes);
+  }
+}
+
+function AltaOModificaInfo() {
+  catReportes.setOnUpdate(operacionExitosa);
+  if(operacion==OPER_ALTA && fvCatReportes.checkForm())//Se trata de una alta
+  {
+    alert("funcion AltaOModifica() activada desde alta");
+    showWaitLayer();
+    catReportes.altaCatalogo();
+  }
+  else if(operacion==OPER_MODIFICAR && fvCatReportes.checkForm())//Se trata de una modificación
+  {
+    alert("funcion AltaOModifica() activada desde modifica");
+    showWaitLayer();
+    catReportes.modificaCatalogo();
+  }
+}
+
+
+
+
+/*function despliegaPantallaMantenimientoOperacionesFideicomisos(obj, result) {
+  GI("dvContenido").innerHTML = result;
+  initForms();
+  ocultaObj("cmdObligaciones");
+  if(modo == OPER_CONSULTAR || modo == OPER_MODIFICAR){
+    deshabilitaPK(arrIdPK);
+    if(modo == OPER_CONSULTAR){
+      deshabilitaObjetos(GI("frmMantenimientoCedulaFiscal"));
+      GI("cmdCancelar").value = "Regresar";
+      muestraObjs("cmdCancelar,cmdObligaciones");
+    }
+  }
+  if(modo == OPER_ALTA || modo == OPER_MODIFICAR)
+    muestraObjs("cmdAceptar,cmdCancelar");
+}
+
+function asignaValues2ObjHTML(){
+  if(isDefinedAndNotNull(pkInfo) && modo != OPER_ALTA){
+    catCedrefis.setOnUpdate(cargaComplemento);
+    catCedrefis.buscaCatalogoPK(false);
+    GI("trfCveTratfisc").value = trfCveTratfisc;
+  }else
+    formsLoaded();
+}
+function cargaComplemento(){
+  consultaNombreFideicomiso("nomFideicomiso",GI("crfNumFideicom"));
+  formsLoaded();
+}
+function ejecutaOperacionCedulaFiscal(){
+  if(modo == OPER_ALTA){
+    if(fvCatReportes.checkForm()){
+    //  showWaitLayer();
+      verificaCedulaFiscal();
+    }
+  }else if(modo == OPER_MODIFICAR){
+    if(fvCatReportes.checkForm()){
+    //  showWaitLayer();
+      catCedrefis.setOnUpdate(avisoOperacionCatalogo);
+      catCedrefis.modificaCatalogo();
+      onButtonClick("Contabilidad.CedulaFiscal.PrincipalCedulaFiscalRegimenFiscal","");
+      hideWaitLayer();
+    }
+  }else if(modo == OPER_BAJA){
+   // showWaitLayer();
+    catTratFid.getCatalogo().crfNumFideicom = catCedrefis.getCatalogo().crfNumFideicom;
+    catTratFid.getCatalogo().trfCveTratfisc = trfCveTratfisc;
+    catTratFid.setOnUpdate(bajaObligaciones);
+    catTratFid.bajaCatalogo(false);
+  }
+}
+function altaComplemento(){
+  catCedrefis.setOnUpdate(avisoOperacionCatalogo);
+  catTratFid.setOnUpdate(avisoOperacionCatalogo);
+  catTratFid.altaCatalogo();
+  onButtonClick("Contabilidad.CedulaFiscal.PrincipalCedulaFiscalRegimenFiscal","");
+  hideWaitLayer();
+}
+function bajaObligaciones(){
+  var fideicomiso = catCedrefis.getCatalogo().crfNumFideicom;
+  var url = ctxRoot + "/doRef.do?json={\"id\":\"delOblFid\",\"Fideicomiso\":" + fideicomiso + "}";
+  makeAjaxRequest(url, "HTML", bajaCedulaFiscal, null);
+}
+
+function bajaCedulaFiscal(obj, result){
+  catCedrefis.setOnUpdate(avisoOperacionCatalogo);
+  catCedrefis.bajaCatalogo(false);
+  onButtonClick("Contabilidad.CedulaFiscal.PrincipalCedulaFiscalRegimenFiscal","");
+  hideWaitLayer();
+}
+function cargaPrincipalCedulaFiscalRegimenFiscal(){
+  showWaitLayer();
+  loadDynamicJS(ctxRoot + "/modules/Contabilidad/CedulaFiscal/PrincipalObligacionesCedulaFiscalRegimenFiscal.js");
+  var urlCliente = "modules/Contabilidad/CedulaFiscal/PrincipalObligacionesCedulaFiscalRegimenFiscal.do";
+  makeAjaxRequest(urlCliente, "HTML", despliegaPantallaPrincipalObligacionesCedulaFiscalRegimenFiscal, null);
+}
+
+function despliegaPantallaPrincipalObligacionesCedulaFiscalRegimenFiscal(obj, result) {
+  GI("dvContenido").innerHTML = result;
+  deshabilitaPK("crfNumFideicom".split(","));
+  catCedrefis.setOnUpdate(cargaComplemento2);
+  catCedrefis.buscaCatalogoPK(false);
+}
+function cargaComplemento2(){
+  GI("paramFideicomiso").value = GI("crfNumFideicom").value;
+  consultaNombreFideicomiso("nomFideicomiso",GI("crfNumFideicom"));
+  consultar(GI("paramorder"), frmDatosObligacionesFiscales, false);
+  consultar(GI("crfNumFideicom"), frmDatosObligacionesFiscales, false);
+  formsLoaded();
+}
+function verificaCedulaFiscal(){
+  var fideicomiso = GI("crfNumFideicom").value;
+  var url = ctxRoot + "/getRef.do?json={\"id\":\"verExiCedFis\",\"Fideicomiso\":" + fideicomiso + "}";
+  makeAjaxRequest(url, "HTML", validaCedulaFiscal, null);
+}
+
+function validaCedulaFiscal(obj, result){
+  var objValida = JSON.parse(result)[0];
+  if(objValida.existeRegistro != 0){
+    alert("El Fideicomiso ya cuenta con Cédula Fiscal");
+  }else{
+    catCedrefis.setOnUpdate(altaComplemento);
+    catCedrefis.altaCatalogo();
+  }
+ // hideWaitLayer();
+}*/
+
+
+MantenimientoOperacionesFideicomisos___________________________________________________

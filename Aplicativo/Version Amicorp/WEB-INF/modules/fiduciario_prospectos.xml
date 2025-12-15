@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="consultaCombosProspectosController"
+        class="mx.gob.nafin.fiduciario.controller.formalizacion.ConsultaCombosProspectosController">
+    <property name="methodNameResolver">
+      <ref bean="consultaCombosProspectosResolver"/>
+    </property>
+    <!--property name="consultaCombosProspectos" ref="consultaCombosProspectos"/-->
+  </bean>
+  <bean id="consultaCombosProspectosResolver"
+        class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+    <property name="mappings">
+    </property>
+  </bean>
+  <!--bean id="consultaCombosProspectos"
+        class="mx.gob.nafin.fiduciario.business.formalizacion.ConsultaCombosProspectos">
+    <property name="jdbcTemplate" ref="JdbcTemplate"/>
+  </bean-->
+</beans>

@@ -1,0 +1,28 @@
+<!-- UNIDADES Liberacion -->
+       
+       <entry key="prinLiberacion" value=" select FUNI_ID_FIDEICOMISO,FUNI_ID_SUBCUENTA,FUNI_ID_BIEN,FUNI_ID_DEPTO,FADQ_NOMBRE_COMPRADOR,FUNI_NOTARIO,FUNI_LOCALIDAD_NOTA,FUNI_NUM_ESCRITURA,FUNI_FOLIO_REAL,FUNI_FECHA_TRASLADO_DOMINIO,FUNI_STATUS FROM f_unidades, f_adquirentes  WHERE FUNI_ID_FIDEICOMISO = FADQ_ID_FIDEICOMISO and FUNI_ID_SUBCUENTA = FADQ_ID_SUBCUENTA and FUNI_ID_BIEN = FADQ_ID_BIEN and FUNI_ID_DEPTO = FADQ_ID_DEPTO and FUNI_STATUS = 'COMPROMETIDO'"/>
+     	
+
+
+
+<entry key="prinLiberacion">
+          <list>
+            <bean class="mx.gob.nafin.fiduciario.common.beans.ParametroQueryBean">
+              <property name="name"><value>NumFideicomiso</value></property>
+              <property name="sqlName"><value>FUNI_ID_FIDEICOMISO</value></property>
+              <property name="clauseType"><value>AND</value></property>
+              <property name="conditionType"><value>=</value></property>
+            </bean>
+            <bean class="mx.gob.nafin.fiduciario.common.beans.ParametroQueryBean">
+              <property name="name"><value>Unidad</value></property>
+              <property name="sqlName"><value>FUNI_ID_DEPTO</value></property>
+              <property name="clauseType"><value>AND</value></property>
+              <property name="conditionType"><value>LIKE</value></property>
+            </bean>
+            <bean class="mx.gob.nafin.fiduciario.common.beans.ParametroQueryBean">
+              <property name="name"><value>order</value></property>
+              <property name="orderClause"><value>FUNI_ID_FIDEICOMISO</value></property>
+              <property name="order"><value>true</value></property>
+            </bean>
+          </list>
+        </entry>

@@ -1,0 +1,26 @@
+
+	.style14 {
+				font-size: 16px;
+				font-weight: bold;
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+			 }
+	.style15 {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: bold;
+			 }
+	.style16 {font-family: Arial, Helvetica, sans-serif}
+	.style18 {
+				font-size: 12px;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+			 }
+	.error   {
+	       font-family: Arial, Helvetica, Verdana;	
+				 font-size: 14px;color: #006699;
+				 font-weight: bold;
+			 }	 		 
+.style26 {font-size: xx-small}
+body,td,th {
+	font-size: xx-small;
+}
